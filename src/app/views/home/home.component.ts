@@ -13,6 +13,7 @@ import {SharedAnimations} from '../../shared/animations/shared-animations';
   animations: [SharedAnimations]
 })
 export class HomeComponent implements OnInit {
+  selectedTab = 'spaceships';
   viewMode: 'list' | 'grid' = 'grid';
   page = 1;
   pageSize = 8;
@@ -35,5 +36,9 @@ export class HomeComponent implements OnInit {
           return p.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
         });
       }));
+  }
+
+  selectTab(id: string) {
+    this.selectedTab = id;
   }
 }

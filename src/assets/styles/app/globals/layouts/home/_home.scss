@@ -6,7 +6,6 @@
 }
 
 .headline-section {
-  height: 40vh;
   background-image: url('../../images/photo-wide-4.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -25,44 +24,73 @@
     letter-spacing: 3px;
   }
 
-  ngb-tabset {
-    ul[role="tablist"] {
-      .nav-item {
-        background: rgba($color: $primary, $alpha: .1);
-        margin-right: 5px;
-        .nav-link {
-          color: $gray-300;
-          font-size: 1.3rem;
-          display: flex;
-          align-items: center;
-          height: 84px;
-          padding: 0 25px;
-          i {
-            font-size: 1.6rem;
-          }
-          &.active {
-            background: $white;
+  ul[role="tablist"] {
+    .nav-item {
+      background: rgba($color: $primary, $alpha: .1);
+      margin-right: 5px;
+      .nav-link {
+        color: $gray-300;
+        font-family: $font-family-heading;
+        font-weight: bold;
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        height: 84px;
+        padding: 0 25px;
+        border-radius: 0;
+        i {
+          font-size: 1.6rem;
+        }
+        &.active {
+          background: $white;
+          &.spaceships {
             color: $primary;
           }
+          &.premium {
+            color: $success;
+          }
+          &.gxefast {
+            color: $warning;
+          }
         }
-        &:first-child {
+      }
+      &:first-child {
+        .nav-link {
           border-top-left-radius: 10px;
         }
-        &:last-child {
+      }
+      &:last-child {
+        .nav-link {
           border-top-right-radius: 10px;
         }
       }
     }
-    .tab-content {
-      background: $white;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-      border-top-right-radius: 10px;
-      box-shadow: 0 4px 20px 1px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.08);
-      border: 0;
-      padding: 1rem 1rem 0.5rem 1rem;
-      &.border-top {
-        box-shadow: 0 4px 15px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.1), inset 0 2px 0 0 $green;
+  }
+  .tab-content {
+    background: $white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 4px 20px 1px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.08);
+    border: 0;
+    padding: 1rem 1rem 0.5rem 1rem;
+    &.border-top {
+      box-shadow: 0 4px 15px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.1), inset 0 2px 0 0 $green;
+    }
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.3rem;
+      font-family: $font-family-heading;
+      font-weight: bold;
+      letter-spacing: 3px;
+      &.spaceships {
+        background-color: $primary;
+      }
+      &.premium {
+        background-color: $success;
+      }
+      &.gxefast {
+        background-color: $warning;
       }
     }
   }
