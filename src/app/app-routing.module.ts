@@ -39,6 +39,16 @@ const routes: Routes = [
     ]
   },
   {
+    path: '',
+    component: HomeLayoutComponent,
+    children: [
+      {
+        path: 'planets',
+        loadChildren: './views/pages/planets/planets.module#PlanetsModule'
+      }
+    ]
+  },
+  {
     path: '**',
     redirectTo: 'others/404'
   }

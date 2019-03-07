@@ -26,34 +26,6 @@
       }
     }
 
-    .search-bar {
-      display: flex;
-      align-items: center;
-      justify-content: left;
-      background: $gray-100;
-      border: 1px solid $gray-200;
-      border-radius: 20px;
-      position: relative;
-      width: 230px;
-      height: 40px;
-      input {
-        background: transparent;
-        border: 0;
-        color: #212121;
-        font-size: .8rem;
-        line-height: 2;
-        height: 100%;
-        outline: initial !important;
-        padding: .5rem 1rem;
-        width: calc(100% - 32px);
-      }
-      .search-icon {
-        font-size: 18px;
-        width: 24px;
-        display: inline-block;
-      }
-    }
-
     .logo {
       width: $sidebar-left-width;
       img {
@@ -62,6 +34,25 @@
         display: block;
       }
     }
+
+    nav {
+      .navbar-nav {
+        .nav-item {
+          .nav-link {
+            font-family: $font-family-heading;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    .discover {
+      background-color: $warning;
+      color: $white;
+      font-family: $font-family-heading;
+      border: none;
+    }
+
     .header-icon {
       font-size: 19px;
       cursor: pointer;

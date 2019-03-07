@@ -2,7 +2,7 @@
   <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
     <div class="container">
       <div class="row">
-        <div class="col-md-12 mb-4 text-white text-center">
+        <div class="col-md-12 mb-5 text-white text-center">
           <h1 class="h1-reponsive text-white text-uppercase font-weight-bold mb-0 pt-md-5 pt-5"><strong>Welcome to Gala&bull;xe</strong>
           </h1>
           <hr class="hr-light my-4">
@@ -100,45 +100,87 @@
               </a>
             </li>
           </ul>
-          <div class="tab-content" id="pills-tabContent">
+          <div class="tab-content pt-4">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
               <div class="row d-flex">
-                <div class="col-sm-12 col-md-6">
-                  <input type="text" placeholder="Type here" class="search-input form-control"
-                         [formControl]="searchCtrl" autofocus>
+                <div class="col-sm-12 col-md-6 text-left">
+                  <label for="search" class="text-dark text-uppercase">Select pick-up planet</label>
+                  <select id="search" class="form-control">
+                    <option>Earth</option>
+                    <option>Mercury</option>
+                    <option>Venus</option>
+                    <option>Mars</option>
+                    <option>Jupiter</option>
+                    <option>Saturn</option>
+                    <option>Uranus</option>
+                    <option>Neptune</option>
+                  </select>
+                  <!--<input type="text" placeholder="Type here" class="search-input form-control"-->
+                         <!--[formControl]="searchCtrl" autofocus>-->
                 </div>
-                <div class="col-sm-12 col-md-3">
-                  <p class="text-primary">wefewfew</p>
+                <div class="col-sm-12 col-md-3 text-left">
+                  <label for="picker1" class="text-dark text-uppercase">Pick-up date</label>
+                  <div class="input-group">
+                    <input id="picker1" class="form-control" placeholder="yyyy-mm-dd" name="dp"
+                           ngbDatepicker #dp="ngbDatepicker">
+                    <div class="input-group-append">
+                      <button class="btn btn-secondary" (click)="dp.toggle()" type="button">
+                        <i class="icon-regular i-Calendar-4"></i>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-sm-12 col-md-3">
-                  <p class="text-primary">wefewfew</p>
+                <div class="col-sm-12 col-md-3 text-left">
+                  <label for="picker2" class="text-dark text-uppercase">Drop off date</label>
+                  <div class="input-group">
+                    <input id="picker2" class="form-control" placeholder="yyyy-mm-dd" name="dp0"
+                           ngbDatepicker #dp0="ngbDatepicker">
+                    <div class="input-group-append">
+                      <button class="btn btn-secondary" (click)="dp0.toggle()" type="button">
+                        <i class="icon-regular i-Calendar-4"></i>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <fieldset class="form-group">
+              <fieldset class="form-group text-left mt-3">
                 <div class="row">
-                  <div class="col-sm-12">
-                    <div class="form-check float-left">
+                  <div class="col-sm-12 col-md-6">
+                    <label class="d-block text-dark text-uppercase">Pilot's age
+                      <i class="i-Information mr-1 pointer info" popoverTitle="Pilot's age" placement="right"
+                         ngbPopover="Young pilots are required to pay a “Young Pilot Fee”, indicated in Special Rental Conditions. The amount changes according to the age range (19-21 years or 22-24 years) and is automatically added on top of the rental cost.">
+                      </i></label>
+                    <div class="form-check d-inline mr-2">
                       <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
                              value="option1" checked>
                       <label class="form-check-label" for="gridRadios1">
-                        First radio
+                        19-21
                       </label>
                     </div>
-                    <div class="form-check float-left">
+                    <div class="form-check d-inline mr-2">
                       <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
                              value="option2">
                       <label class="form-check-label" for="gridRadios2">
-                        Second radio
+                        22-24
                       </label>
                     </div>
-                    <div class="form-check float-left">
+                    <div class="form-check d-inline">
                       <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
                              value="option3" disabled>
                       <label class="form-check-label" for="gridRadios3">
-                        Third disabled radio
+                        25+
                       </label>
                     </div>
-                    <button type="button" class="btn btn-lg {{selectedTab}} float-right m-1 text-white text-uppercase">Continue</button>
+                  </div>
+                  <div class="col-sm-12 col-md-3">
+                    <label class="checkbox checkbox-outline-primary">
+                      <input type="checkbox">
+                      <span class="text-uppercase">Promo code</span>
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                  <div class="col-sm-12 col-md-3">
+                    <button type="submit" class="btn btn-lg btn-block {{selectedTab}} float-right text-white text-uppercase">Search</button>
                   </div>
                 </div>
               </fieldset>

@@ -23,7 +23,7 @@ export class SigninComponent implements OnInit {
     ngOnInit() {
         this.router.events.subscribe(event => {
             if (event instanceof RouteConfigLoadStart || event instanceof ResolveStart) {
-                this.loadingText = 'Loading Bonus Module...';
+                this.loadingText = 'Loading Home Module...';
 
                 this.loading = true;
             }
@@ -43,7 +43,7 @@ export class SigninComponent implements OnInit {
         this.loadingText = 'Sigining in...';
         this.auth.signin(this.signinForm.value)
             .subscribe(res => {
-                this.router.navigateByUrl('/bonus');
+                this.router.navigateByUrl('/home');
                 this.loading = false;
             });
     }
