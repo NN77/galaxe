@@ -14,6 +14,7 @@ import { HomeFooterComponent } from './home-layout/home-footer/home-footer.compo
 import { SidebarLayoutComponent } from './sidebar-layout/sidebar-layout.component';
 import { SidebarHeaderComponent } from './sidebar-layout/sidebar-header/sidebar-header.component';
 import { SidebarFooterComponent } from './sidebar-layout/sidebar-footer/sidebar-footer.component';
+import {SidebarComponent} from './sidebar-layout/sidebar/sidebar.component';
 
 const components = [
   AuthLayoutComponent,
@@ -22,7 +23,8 @@ const components = [
   HomeFooterComponent,
   SidebarLayoutComponent,
   SidebarHeaderComponent,
-  SidebarFooterComponent
+  SidebarFooterComponent,
+  SidebarComponent
 ];
 
 @NgModule({

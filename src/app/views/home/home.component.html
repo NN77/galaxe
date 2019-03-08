@@ -7,7 +7,6 @@
           </h1>
           <hr class="hr-light my-4">
           <h5 class="text-uppercase mb-4 text-white"><strong>spaceships rental all across Universe</strong></h5>
-          <!--<input type="text" placeholder="Type here" class="search-input form-control" [formControl]="searchCtrl" autofocus>&ndash;&gt;-->
           <ul class="nav nav-pills" id="pills-tab" role="tablist">
             <li class="nav-item">
               <a class="nav-link spaceships" href="#" role="tab" (click)="selectTab('spaceships')" [class.active]="selectedTab === 'spaceships'">
@@ -31,7 +30,8 @@
                 <div formGroupName="planet" class="col-sm-12 col-md-12 col-lg-4 text-left">
                   <label for="planet0" class="text-dark text-uppercase">Select Pick-up planet</label>
                   <div class="input-group">
-                    <select name="planet" id="planet0" formControlName="pick_up" class="form-control">
+                    <select name="planet" id="planet0" formControlName="pick_up" class="form-control" placeholder="dwdw">
+                      <option value="" disabled selected hidden>Select pick-up planet</option>
                       <option *ngFor="let p of planets" [ngValue]="p">{{p}}</option>
                     </select>
                     <div class="input-group-append select-arrow-append">
@@ -49,6 +49,7 @@
                     <label for="planet1" class="text-dark text-uppercase">Select drop off planet</label>
                     <div class="input-group">
                       <select name="planet" id="planet1" formControlName="drop_off" class="form-control">
+                        <option value="" disabled selected hidden>Select drop off planet</option>
                         <option *ngFor="let d of planets" [ngValue]="d">{{d}}</option>
                       </select>
                       <div class="input-group-append select-arrow-append">
@@ -171,7 +172,7 @@
         <path d="M0,97.92v24.48h612V97.92H0z M0,318.24h612v-24.48H0V318.24z M0,514.08h612V489.6H0V514.08z" />
       </svg>
     </button>
-    <p class="d-inline ml-3">Available spaceships in selected localization listed below. Please se</p>
+    <p class="d-inline ml-3">Available spaceships in selected localization listed below</p>
   </div>
 </div>
 
@@ -208,7 +209,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-12 mt-3" *ngIf="spaceships?.length">
+  <div class="col-md-12 mt-3" *ngIf="(spaceships$ | async)?.length">
     <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
   </div>
 </div>

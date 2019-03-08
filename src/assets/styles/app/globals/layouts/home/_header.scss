@@ -119,7 +119,7 @@
 }
 
 @media (max-width: 991px) {
-  .layout-sidebar-large {
+  .layout-home {
     .main-header {
       .search-bar {
         width: 180px;
@@ -133,7 +133,7 @@
 }
 
 @media (max-width: 767px) {
-  .layout-sidebar-large {
+  .layout-home {
     .main-header {
       .search-bar {
         display: none;
@@ -147,7 +147,7 @@
 }
 
 @media (max-width: 576px) {
-  .layout-sidebar-large {
+  .layout-home {
     .main-header {
       height: $topbar-height-mobile;
       padding: 0 1.5rem;
@@ -175,7 +175,7 @@
 }
 
 @media (max-width: 360px) {
-  .layout-sidebar-large {
+  .layout-home {
     .main-header {
       .menu-toggle {
         margin: 0;
