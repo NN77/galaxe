@@ -4,6 +4,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {AuthGaurd} from './shared/guards/auth.gaurd';
 import {AuthLayoutComponent} from './shared/components/layouts/auth-layout/auth-layout.component';
 import {HomeLayoutComponent} from './shared/components/layouts/home-layout/home-layout.component';
+import {SidebarLayoutComponent} from './shared/components/layouts/sidebar-layout/sidebar-layout.component';
 
 const adminRoutes: Routes = [
   {
@@ -45,6 +46,16 @@ const routes: Routes = [
       {
         path: 'planets',
         loadChildren: './views/pages/planets/planets.module#PlanetsModule'
+      }
+    ]
+  },
+  {
+    path: '',
+    component: SidebarLayoutComponent,
+    children: [
+      {
+        path: 'spaceships',
+        loadChildren: './views/pages/spaceships/spaceships.module#SpaceshipsModule'
       }
     ]
   },

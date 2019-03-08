@@ -47,6 +47,25 @@ textarea {
     height: 34px;
 }
 
+ngb-timepicker {
+  font-size: inherit !important;
+  .ngb-tp {
+    .ngb-tp-input-container {
+      button:first-child {
+        top: 1.6em;
+      }
+      button {
+        position: absolute;
+        top: 4.8em;
+      }
+      .form-control {
+        padding: 1rem 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
 
 /* checkbox-custom */
 .checkbox {

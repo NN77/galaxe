@@ -7,82 +7,7 @@
           </h1>
           <hr class="hr-light my-4">
           <h5 class="text-uppercase mb-4 text-white"><strong>spaceships rental all across Universe</strong></h5>
-          <!--<ngb-tabset>-->
-          <!--<ngb-tab>-->
-          <!--<ng-template ngbTabTitle><span class="tab-title text-uppercase font-weight-bold"><i class="i-Plane mr-1"></i> Spaceships</span></ng-template>-->
-          <!--<ng-template ngbTabContent>-->
-          <!--<div class="row d-flex">-->
-          <!--<div class="col-sm-12 col-md-6">-->
-          <!--<input type="text" placeholder="Type here" class="search-input form-control" [formControl]="searchCtrl" autofocus>-->
-          <!--</div>-->
-          <!--<div class="col-sm-12 col-md-3">-->
-          <!--<p class="text-primary">wefewfew</p>-->
-          <!--</div>-->
-          <!--<div class="col-sm-12 col-md-3">-->
-          <!--<p class="text-primary">wefewfew</p>-->
-          <!--</div>-->
-          <!--</div>-->
-          <!--<fieldset class="form-group">-->
-          <!--<div class="row">-->
-          <!--<div class="col-sm-12">-->
-          <!--<div class="form-check float-left">-->
-          <!--<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"-->
-          <!--value="option1" checked>-->
-          <!--<label class="form-check-label" for="gridRadios1">-->
-          <!--First radio-->
-          <!--</label>-->
-          <!--</div>-->
-          <!--<div class="form-check float-left">-->
-          <!--<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"-->
-          <!--value="option2">-->
-          <!--<label class="form-check-label" for="gridRadios2">-->
-          <!--Second radio-->
-          <!--</label>-->
-          <!--</div>-->
-          <!--<div class="form-check float-left">-->
-          <!--<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"-->
-          <!--value="option3" disabled>-->
-          <!--<label class="form-check-label" for="gridRadios3">-->
-          <!--Third disabled radio-->
-          <!--</label>-->
-          <!--</div>-->
-          <!--<button type="button" class="btn btn-lg btn-primary float-right m-1">Continue</button>-->
-          <!--</div>-->
-          <!--</div>-->
-          <!--</fieldset>-->
-          <!--</ng-template>-->
-          <!--</ngb-tab>-->
-          <!--<ngb-tab>-->
-          <!--<ng-template ngbTabTitle><span class="tab-title text-uppercase font-weight-bold"><i class="i-Jet mr-1"></i> Premium</span></ng-template>-->
-          <!--<ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee-->
-          <!--squid.-->
-          <!--<p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko-->
-          <!--farm-to-table-->
-          <!--craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad-->
-          <!--vinyl-->
-          <!--cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS-->
-          <!--salvia-->
-          <!--yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable-->
-          <!--jean-->
-          <!--shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher-->
-          <!--vero-->
-          <!--sint qui sapiente accusamus tattooed echo park.</p>-->
-          <!--</ng-template>-->
-          <!--</ngb-tab>-->
-          <!--<ngb-tab>-->
-          <!--<ng-template ngbTabTitle><span class="tab-title text-uppercase font-weight-bold"><i class="i-Stopwatch-2 mr-1"></i> GXEFAST</span></ng-template>-->
-          <!--<ng-template ngbTabContent>-->
-          <!--<p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla-->
-          <!--facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu,-->
-          <!--congue et odio. Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices-->
-          <!--et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus-->
-          <!--faucibus nisl enim, nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci-->
-          <!--varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac-->
-          <!--lorem-->
-          <!--aliquet ultricies in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>-->
-          <!--</ng-template>-->
-          <!--</ngb-tab>-->
-          <!--</ngb-tabset>-->
+          <!--<input type="text" placeholder="Type here" class="search-input form-control" [formControl]="searchCtrl" autofocus>&ndash;&gt;-->
           <ul class="nav nav-pills" id="pills-tab" role="tablist">
             <li class="nav-item">
               <a class="nav-link spaceships" href="#" role="tab" (click)="selectTab('spaceships')" [class.active]="selectedTab === 'spaceships'">
@@ -100,50 +25,82 @@
               </a>
             </li>
           </ul>
-          <div class="tab-content pt-4">
+          <form [formGroup]="searchForm" class="tab-content pt-4">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-              <div class="row d-flex">
-                <div class="col-sm-12 col-md-6 text-left">
-                  <label for="search" class="text-dark text-uppercase">Select pick-up planet</label>
-                  <select id="search" class="form-control">
-                    <option>Earth</option>
-                    <option>Mercury</option>
-                    <option>Venus</option>
-                    <option>Mars</option>
-                    <option>Jupiter</option>
-                    <option>Saturn</option>
-                    <option>Uranus</option>
-                    <option>Neptune</option>
-                  </select>
-                  <!--<input type="text" placeholder="Type here" class="search-input form-control"-->
-                         <!--[formControl]="searchCtrl" autofocus>-->
-                </div>
-                <div class="col-sm-12 col-md-3 text-left">
-                  <label for="picker1" class="text-dark text-uppercase">Pick-up date</label>
+              <div class="row d-flex pb-3">
+                <div formGroupName="planet" class="col-sm-12 col-md-12 col-lg-4 text-left">
+                  <label for="planet0" class="text-dark text-uppercase">Select Pick-up planet</label>
                   <div class="input-group">
-                    <input id="picker1" class="form-control" placeholder="yyyy-mm-dd" name="dp"
-                           ngbDatepicker #dp="ngbDatepicker">
-                    <div class="input-group-append">
-                      <button class="btn btn-secondary" (click)="dp.toggle()" type="button">
-                        <i class="icon-regular i-Calendar-4"></i>
+                    <select name="planet" id="planet0" formControlName="pick_up" class="form-control">
+                      <option *ngFor="let p of planets" [ngValue]="p">{{p}}</option>
+                    </select>
+                    <div class="input-group-append select-arrow-append">
+                      <button disabled>
+                        <i class="icon-regular i-Arrow-Down-3"></i>
                       </button>
                     </div>
                   </div>
+                  <label *ngIf="searchForm.dirty" class="checkbox checkbox-outline-primary mt-2">
+                    <input type="checkbox" [(ngModel)]="dropOffPlanet" [ngModelOptions]="{standalone: true}" (ngModelChange)="dropOffCheckboxChange($event)">
+                    <span class="text-dark">Drop off to another planet</span>
+                    <span class="checkmark"></span>
+                  </label>
+                  <div *ngIf="!dropOffPlanet" [@animate]="{value:'*',params:{delay: '300ms', y:'50px'}}">
+                    <label for="planet1" class="text-dark text-uppercase">Select drop off planet</label>
+                    <div class="input-group">
+                      <select name="planet" id="planet1" formControlName="drop_off" class="form-control">
+                        <option *ngFor="let d of planets" [ngValue]="d">{{d}}</option>
+                      </select>
+                      <div class="input-group-append select-arrow-append">
+                        <button disabled>
+                          <i class="icon-regular i-Arrow-Down-3"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-sm-12 col-md-3 text-left">
-                  <label for="picker2" class="text-dark text-uppercase">Drop off date</label>
-                  <div class="input-group">
-                    <input id="picker2" class="form-control" placeholder="yyyy-mm-dd" name="dp0"
-                           ngbDatepicker #dp0="ngbDatepicker">
-                    <div class="input-group-append">
-                      <button class="btn btn-secondary" (click)="dp0.toggle()" type="button">
-                        <i class="icon-regular i-Calendar-4"></i>
-                      </button>
+                <div formGroupName="rentalStart" class="col-sm-12 col-md-12 col-lg-4 text-left">
+                  <div class="row">
+                    <div class="col-sm-8 col-md-8 text-left">
+                      <label for="picker0" class="text-dark text-uppercase">Pick-up date</label>
+                      <div class="input-group">
+                        <input id="picker0" formControlName="date" class="form-control" placeholder="yyyy-mm-dd" name="dp0"
+                               ngbDatepicker #dp0="ngbDatepicker">
+                        <div class="input-group-append">
+                          <button class="btn btn-secondary" (click)="dp0.toggle()" type="button">
+                            <i class="icon-regular i-Calendar-4"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4 text-left pl-0 pr-0">
+                      <label for="picker1" class="text-dark text-uppercase">Pick-up time</label>
+                      <ngb-timepicker id="picker1" formControlName="time"></ngb-timepicker>
+                    </div>
+                  </div>
+                </div>
+                <div formGroupName="rentalEnd" class="col-sm-12 col-md-12 col-lg-4 text-left">
+                  <div class="row">
+                    <div class="col-sm-8 col-md-8 text-left">
+                      <label for="picker2" class="text-dark text-uppercase">Drop off date</label>
+                      <div class="input-group">
+                        <input id="picker2" formControlName="date" class="form-control" placeholder="yyyy-mm-dd" name="dp1"
+                               ngbDatepicker #dp1="ngbDatepicker">
+                        <div class="input-group-append">
+                          <button class="btn btn-secondary" (click)="dp1.toggle()" type="button">
+                            <i class="icon-regular i-Calendar-4"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4 text-left pl-0">
+                      <label for="picker3" class="text-dark text-uppercase">Drop off time</label>
+                      <ngb-timepicker id="picker3" formControlName="time"></ngb-timepicker>
                     </div>
                   </div>
                 </div>
               </div>
-              <fieldset class="form-group text-left mt-3">
+              <fieldset class="form-group text-left mt-2">
                 <div class="row">
                   <div class="col-sm-12 col-md-6">
                     <label class="d-block text-dark text-uppercase">Pilot's age
@@ -166,7 +123,7 @@
                     </div>
                     <div class="form-check d-inline">
                       <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
-                             value="option3" disabled>
+                             value="option3">
                       <label class="form-check-label" for="gridRadios3">
                         25+
                       </label>
@@ -180,12 +137,13 @@
                     </label>
                   </div>
                   <div class="col-sm-12 col-md-3">
-                    <button type="submit" class="btn btn-lg btn-block {{selectedTab}} float-right text-white text-uppercase">Search</button>
+                    <btn-loading type="submit" class="{{selectedTab}} float-right" [disabled]="searchForm.invalid || loading"
+                                 (click)="continue()" [loading]="loading">Continue</btn-loading>
                   </div>
                 </div>
               </fieldset>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
@@ -193,7 +151,7 @@
 </div>
 
 <div class="row wide-container mt-4 mb-4">
-  <div class="col-6">
+  <div *ngIf="(spaceships$ | async)?.length" class="col-12">
     <button class="btn btn-sm btn-rounded btn-outline-light btn-svg mr-2" [ngClass]="{active: viewMode === 'grid'}"
             (click)="viewMode = 'grid'">
       <svg version="1.1" width="16px" id="grid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -213,12 +171,15 @@
         <path d="M0,97.92v24.48h612V97.92H0z M0,318.24h612v-24.48H0V318.24z M0,514.08h612V489.6H0V514.08z" />
       </svg>
     </button>
+    <p class="d-inline ml-3">Available spaceships in selected localization listed below. Please se</p>
   </div>
 </div>
 
-<!-- DATA LIST -->
 <div class="row wide-container" [ngClass]="{'list-horizontal': viewMode === 'list', 'list-grid': viewMode === 'grid'}">
-  <!-- SINGLE LIST ITEM -->
+  <div *ngIf="!(spaceships$ | async)?.length && searchForm.dirty" class="col-12">
+    <p><strong>There are no spaceships for the selected planet, dates or time.</strong><p>
+    <p>We advise you to try other planet, days or time.<p>
+  </div>
   <div *ngFor="let item of spaceships$ | async | paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index"
        class="list-item"
        [ngClass]="{'col-md-12': viewMode === 'list', 'col-md-3': viewMode === 'grid'}"
@@ -227,14 +188,12 @@
     <div class="card o-hidden mb-4 d-flex"
          [ngClass]="{'flex-row': viewMode === 'list', 'flex-column': viewMode === 'grid'}">
       <div class="list-thumb d-flex">
-        <!-- TUMBNAIL -->
         <img [src]="item.photo" alt="">
       </div>
       <div class="flex-grow-1" [ngClass]="{'pl-2 d-flex': viewMode === 'list', 'd-bock': viewMode === 'grid'}">
         <div class="card-body align-self-center d-flex flex-column justify-content-between align-items-lg-center"
              [ngClass]="{'flex-lg-row': viewMode === 'list'}">
-          <!-- OTHER DATA -->
-          <a href="" class="w-40 w-sm-100">
+          <a href="#" class="w-40 w-sm-100">
             <div class="item-title">{{item.name}}</div>
           </a>
           <p class="m-0 text-muted text-small w-15 w-sm-100">{{item.category}}</p>
@@ -245,24 +204,10 @@
           <p class="m-0 text-muted text-small w-15 w-sm-100 d-none d-lg-block item-badges">
             <span class="badge badge-{{item?.badge?.color}}">{{item?.badge?.text}}</span>
           </p>
-          <p class="m-0 text-muted text-small w-15 w-sm-100 d-none d-lg-block item-actions">
-            <button class="btn btn-icon bg-transparent"
-                    [ngClass]="{'d-none': viewMode === 'grid'}">
-              <i class="i-File-Edit text-16 text-primary"></i>
-            </button>
-          </p>
-        </div>
-        <div class="align-self-center pl-3 pb-2 pr-3 item-select">
-          <label class="checkbox checkbox-outline-light">
-            <input type="checkbox" [(ngModel)]="item.isSelected">
-            <span></span>
-            <span class="checkmark"></span>
-          </label>
         </div>
       </div>
     </div>
   </div>
-  <!-- PAGINATION CONTROL -->
   <div class="col-md-12 mt-3" *ngIf="spaceships?.length">
     <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
   </div>

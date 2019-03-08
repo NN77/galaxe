@@ -1,12 +1,16 @@
-<div class="app-wrap layout-home">
+<div class="app-wrap layout-sidebar">
   <div>
-    <app-home-header></app-home-header>
+    <app-sidebar-header></app-sidebar-header>
+  </div>
+  <div class="side-content-wrap">
+    <app-sidebar-layout></app-sidebar-layout>
   </div>
   <div class="main-content-wrap d-flex flex-column"
+       [ngClass]="{'sidenav-open': navService.sidebarState.sidenavOpen}"
        [perfectScrollbar]="{suppressScrollX: true}">
     <router-outlet></router-outlet>
     <div class="flex-grow-1"></div>
-    <app-home-footer></app-home-footer>
+    <app-sidebar-footer></app-sidebar-footer>
     <div class="module-loader" *ngIf="moduleLoading">
       <div class="spinner spinner-bubble spinner-bubble-primary mr-3"></div>
     </div>

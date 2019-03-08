@@ -5,6 +5,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { SharedComponentsModule } from '../../shared/components/shared-components.module';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 
@@ -16,6 +17,7 @@ import { HomeRoutingModule } from './home-routing.module';
     NgxDatatableModule,
     NgxPaginationModule,
     NgbModule,
+    SharedComponentsModule,
     HomeRoutingModule
   ],
   declarations: [HomeComponent],

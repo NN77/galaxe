@@ -2,16 +2,19 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, RouteConfigLoadStart, ResolveStart, RouteConfigLoadEnd, ResolveEnd } from '@angular/router';
 import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 
+import { NavigationService } from '../../../services/navigation.service';
+
 @Component({
-  selector: 'app-home-layout',
-  templateUrl: './home-layout.component.html',
-  styleUrls: ['./home-layout.component.css']
+  selector: 'app-sidebar-layout',
+  templateUrl: './sidebar-layout.component.html',
+  styleUrls: ['./sidebar-layout.component.css']
 })
-export class HomeLayoutComponent implements OnInit {
+export class SidebarLayoutComponent implements OnInit {
   moduleLoading: boolean;
   @ViewChild(PerfectScrollbarDirective) perfectScrollbar: PerfectScrollbarDirective;
 
   constructor(
+    public navService: NavigationService,
     private router: Router
   ) { }
 

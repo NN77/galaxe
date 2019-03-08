@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationService } from '../../../../services/navigation.service';
 import { AuthService } from '../../../../services/auth.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-home-header',
+  templateUrl: './home-header.component.html',
+  styleUrls: ['./home-header.component.css']
 })
-export class HeaderComponent implements OnInit {
-
+export class HomeHeaderComponent implements OnInit {
   notifications: any[];
 
   constructor(
-    private navService: NavigationService,
     private auth: AuthService
   ) {
     this.notifications = [
@@ -62,24 +59,7 @@ export class HeaderComponent implements OnInit {
     ];
   }
 
-  ngOnInit() {
-  }
-
-  toggelSidebar() {
-    const state = this.navService.sidebarState;
-    if (state.childnavOpen && state.sidenavOpen) {
-      return state.childnavOpen = false;
-    }
-    if (!state.childnavOpen && state.sidenavOpen) {
-      return state.sidenavOpen = false;
-    }
-    if (!state.sidenavOpen && !state.childnavOpen) {
-      state.sidenavOpen = true;
-      setTimeout(() => {
-        state.childnavOpen = true;
-      }, 50);
-    }
-  }
+  ngOnInit() {}
 
   signout() {
     this.auth.signout();

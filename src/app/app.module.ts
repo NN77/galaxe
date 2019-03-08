@@ -11,7 +11,7 @@ import { InMemoryDataService } from './shared/services/inmemory-db.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

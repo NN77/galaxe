@@ -9,14 +9,20 @@ import { SharedDirectivesModule } from '../../directives/shared-directives.modul
 
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import { HomeLayoutComponent } from './home-layout/home-layout.component';
-import { HeaderComponent } from './home-layout/header/header.component';
-import { FooterComponent } from './home-layout/footer/footer.component';
+import { HomeHeaderComponent } from './home-layout/home-header/home-header.component';
+import { HomeFooterComponent } from './home-layout/home-footer/home-footer.component';
+import { SidebarLayoutComponent } from './sidebar-layout/sidebar-layout.component';
+import { SidebarHeaderComponent } from './sidebar-layout/sidebar-header/sidebar-header.component';
+import { SidebarFooterComponent } from './sidebar-layout/sidebar-footer/sidebar-footer.component';
 
 const components = [
   AuthLayoutComponent,
   HomeLayoutComponent,
-  HeaderComponent,
-  FooterComponent
+  HomeHeaderComponent,
+  HomeFooterComponent,
+  SidebarLayoutComponent,
+  SidebarHeaderComponent,
+  SidebarFooterComponent
 ];
 
 @NgModule({
