@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import { Router, NavigationExtras } from '@angular/router';
 import { Observable, combineLatest } from 'rxjs';
 import { startWith, debounceTime, switchMap, map } from 'rxjs/operators';
 
 import { DataService } from '../../shared/services/data.service';
 import { SharedAnimations } from '../../shared/animations/shared-animations';
+import { Utils } from '../../shared/utils';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +27,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private dataService: DataService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route: Router
   ) {
     this.createForms();
   }
@@ -72,7 +75,16 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.searchForm.disable();
     const query = this.searchForm.getRawValue();
-    console.log(query);
+
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        'planet': query.planet.pick_up,
+        'rentalStart': Utils.ngbDateToDate(query.rentalStart.date),
+        'rentalEnd': Utils.ngbDateToDate(query.rentalEnd.date)
+      }
+    };
+
+    this.route.navigate(['/spaceships'], navigationExtras);
   }
 
 }

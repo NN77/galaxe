@@ -1,0 +1,23 @@
+.chip {
+  display: inline-block;
+  height: 32px;
+  font-size: 13px;
+  font-weight: 500;
+  color: $white !important;
+  line-height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background-color: #eceff1;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  &.standard {
+    background-color: $primary;
+  }
+  &.premium {
+    background-color: $success;
+  }
+  &.gxefast {
+    background-color: $warning;
+  }
+}

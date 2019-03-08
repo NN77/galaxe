@@ -23,112 +23,112 @@
   h5 {
     letter-spacing: 3px;
   }
+}
 
-  ul[role="tablist"] {
-    .nav-item {
-      background: rgba($color: $primary, $alpha: .1);
-      margin-right: 5px;
+ul[role="tablist"] {
+  .nav-item {
+    background: rgba($color: $primary, $alpha: .1);
+    margin-right: 5px;
+    .nav-link {
+      color: $gray-300;
+      font-family: $font-family-heading;
+      font-weight: bold;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      height: 84px;
+      padding: 0 30px 0 25px;
+      border-radius: 0;
+      i {
+        font-size: 1.6rem;
+      }
+      &.active {
+        background: $white;
+        &.spaceships {
+          color: $primary;
+        }
+        &.premium {
+          color: $success;
+        }
+        &.gxefast {
+          color: $warning;
+        }
+      }
+    }
+    &:first-child {
       .nav-link {
-        color: $gray-300;
-        font-family: $font-family-heading;
-        font-weight: bold;
-        font-size: 1.3rem;
-        display: flex;
-        align-items: center;
-        height: 84px;
-        padding: 0 30px 0 25px;
-        border-radius: 0;
-        i {
-          font-size: 1.6rem;
-        }
-        &.active {
-          background: $white;
-          &.spaceships {
-            color: $primary;
-          }
-          &.premium {
-            color: $success;
-          }
-          &.gxefast {
-            color: $warning;
-          }
-        }
+        border-top-left-radius: 10px;
       }
-      &:first-child {
-        .nav-link {
-          border-top-left-radius: 10px;
-        }
+    }
+    &:last-child {
+      .nav-link {
+        border-top-right-radius: 10px;
       }
-      &:last-child {
-        .nav-link {
-          border-top-right-radius: 10px;
+    }
+  }
+}
+.tab-content {
+  background: $white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 4px 20px 1px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.08);
+  border: 0;
+  padding: 1.5rem 1.5rem 0.75rem 1.5rem;
+  &.border-top {
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .1), inset 0 2px 0 0 $green;
+  }
+  label {
+    font-size: 0.813rem;
+  }
+  .form-control {
+    padding: 1rem;
+    height: auto;
+    border-radius: 0;
+    font-size: 1rem;
+    &:focus {
+      z-index: 0;
+    }
+  }
+  .input-group {
+    .input-group-append {
+      button, span {
+        height: 100%;
+        padding: 0.375rem 1rem;
+      }
+      &.select-arrow-append {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        button {
+          background: transparent;
+          border: 0;
         }
       }
     }
   }
-  .tab-content {
-    background: $white;
-    border-bottom-left-radius: 10px;
+  btn-loading[type="submit"] {
+    padding: 0;
     border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
-    box-shadow: 0 4px 20px 1px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.08);
-    border: 0;
-    padding: 1.5rem 1.5rem 0.75rem 1.5rem;
-    &.border-top {
-      box-shadow: 0 4px 15px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .1), inset 0 2px 0 0 $green;
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.3rem;
+      font-family: $font-family-heading;
+      font-weight: bold;
+      letter-spacing: 3px;
+      color: $white;
+      text-transform: uppercase;
+      display: block;
+      width: 100%;
     }
-    label {
-      font-size: 0.813rem;
+    &.spaceships {
+      background-color: $primary;
     }
-    .form-control {
-      padding: 1rem;
-      height: auto;
-      border-radius: 0;
-      font-size: 1rem;
-      &:focus {
-        z-index: 0;
-      }
+    &.premium {
+      background-color: $success;
     }
-    .input-group {
-      .input-group-append {
-        button, span {
-          height: 100%;
-          padding: 0.375rem 1rem;
-        }
-        &.select-arrow-append {
-          position: absolute;
-          right: 0;
-          height: 100%;
-          button {
-            background: transparent;
-            border: 0;
-          }
-        }
-      }
-    }
-    btn-loading[type="submit"] {
-      padding: 0;
-      border-bottom-right-radius: 10px;
-      button {
-        padding: 1rem 2rem;
-        font-size: 1.3rem;
-        font-family: $font-family-heading;
-        font-weight: bold;
-        letter-spacing: 3px;
-        color: $white;
-        text-transform: uppercase;
-        display: block;
-        width: 100%;
-      }
-      &.spaceships {
-        background-color: $primary;
-      }
-      &.premium {
-        background-color: $success;
-      }
-      &.gxefast {
-        background-color: $warning;
-      }
+    &.gxefast {
+      background-color: $warning;
     }
   }
 }

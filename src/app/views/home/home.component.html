@@ -40,7 +40,7 @@
                       </button>
                     </div>
                   </div>
-                  <label *ngIf="searchForm.dirty" class="checkbox checkbox-outline-primary mt-2">
+                  <label *ngIf="searchForm.dirty" class="checkbox checkbox-outline-primary mt-2" [@animate]="{value:'*',params:{delay: '300ms', y:'50px'}}">
                     <input type="checkbox" [(ngModel)]="dropOffPlanet" [ngModelOptions]="{standalone: true}" (ngModelChange)="dropOffCheckboxChange($event)">
                     <span class="text-dark">Drop off to another planet</span>
                     <span class="checkmark"></span>

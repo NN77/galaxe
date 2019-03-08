@@ -19,10 +19,10 @@ export class SpaceshipsDB {
           'previous': 25
         },
         'features': [
-          { icon: 'Calendar-4', text: 'automatic gearbox' },
-          { icon: 'Calendar-4', text: '4 luggage' },
-          { icon: 'Calendar-4', text: '5 seats' },
-          { icon: 'Calendar-4', text: 'automatic gearbox' }
+          { icon: 'Gear', text: 'automatic gearbox' },
+          { icon: 'Suitcase', text: '4 luggage' },
+          { icon: 'Male', text: '5 seats' },
+          { icon: 'Chrome', text: 'Air Conditioning' }
         ],
         'photo': './assets/images/spaceships/cruiser-1.jpg',
         'gallery': [
@@ -53,10 +53,10 @@ export class SpaceshipsDB {
           'previous': 28
         },
         'features': [
-          'manual gearbox',
-          '3 luggage',
-          '5 seats',
-          'A/C yes'
+          { icon: 'Gear', text: 'manual gearbox' },
+          { icon: 'Suitcase', text: '3 luggage' },
+          { icon: 'Male', text: '5 seats' },
+          { icon: 'Chrome', text: 'Air Conditioning' }
         ],
         'photo': './assets/images/spaceships/destroyer-1.jpg',
         'gallery': [
@@ -87,10 +87,9 @@ export class SpaceshipsDB {
           'previous': 28
         },
         'features': [
-          'manual gearbox',
-          '3 luggage',
-          '5 seats',
-          'A/C yes'
+          { icon: 'Gear', text: 'automatic gearbox' },
+          { icon: 'Suitcase', text: '2 luggage' },
+          { icon: 'Male', text: '2 seats' }
         ],
         'photo': './assets/images/spaceships/corvette-1.jpg',
         'gallery': [
@@ -119,10 +118,10 @@ export class SpaceshipsDB {
           'previous': 50
         },
         'features': [
-          'automatic gearbox',
-          '5 luggage',
-          '7 seats',
-          'A/C yes'
+          { icon: 'Gear', text: 'manual gearbox' },
+          { icon: 'Suitcase', text: '3 luggage' },
+          { icon: 'Male', text: '2 seats' },
+          { icon: 'Chrome', text: 'Air Conditioning' }
         ],
         'photo': './assets/images/spaceships/frigate-1.jpg',
         'gallery': [
@@ -151,10 +150,10 @@ export class SpaceshipsDB {
           'previous': 50
         },
         'features': [
-          'automatic gearbox',
-          '6 luggage',
-          '9 seats',
-          'A/C yes'
+          { icon: 'Gear', text: 'automatic gearbox' },
+          { icon: 'Suitcase', text: '6 luggage' },
+          { icon: 'Male', text: '9 seats' },
+          { icon: 'Chrome', text: 'Air Conditioning' }
         ],
         'photo': './assets/images/spaceships/battlecruiser-1.jpg',
         'gallery': [
@@ -183,10 +182,10 @@ export class SpaceshipsDB {
           'previous': 50
         },
         'features': [
-          'manual gearbox',
-          '7 luggage',
-          '10 seats',
-          'A/C yes'
+          { icon: 'Gear', text: 'manual gearbox' },
+          { icon: 'Suitcase', text: '7 luggage' },
+          { icon: 'Male', text: '10 seats' },
+          { icon: 'Chrome', text: 'Air Conditioning' }
         ],
         'photo': './assets/images/spaceships/carrier-1.jpg',
         'gallery': [

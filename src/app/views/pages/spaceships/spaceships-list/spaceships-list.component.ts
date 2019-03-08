@@ -1,10 +1,12 @@
 import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {combineLatest, Observable} from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { combineLatest, Observable } from 'rxjs';
 import { debounceTime, map, startWith } from 'rxjs/operators';
 
 import { DataService } from '../../../../shared/services/data.service';
 import { SharedAnimations } from '../../../../shared/animations/shared-animations';
+import {Utils} from "../../../../shared/utils";
 
 @Component({
   selector: 'app-spaceships-list',
@@ -25,39 +27,48 @@ export class SpaceshipsListComponent implements OnInit {
 
   constructor(
     private dataService: DataService,
-    private formBuilder: FormBuilder
-  ) {
-    this.createForms();
-  }
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.spaceships$ = combineLatest(
-      this.dataService.getSpaceships(),
-      this.searchForm.get('planet').valueChanges
-        .pipe(startWith({}), debounceTime(200))
-    )
-      .pipe(map(([spaceships, searchObj]) => {
-        return spaceships;
-        // return spaceships.filter(p => {
-        //   return p.currentLocalization === searchObj.pick_up;
-        // });
-      }));
-  }
+    this.route.queryParams.subscribe(params => {
+      // params below should be used to backend GET call,
+      // for demo purposes they're not passed to inMemoryDB internal call
+      const queryParams = {
+        category: 'standard',
+        planet: params.planet,
+        rentalStart: params.rentalStart,
+        rentalEnd: params.rentalEnd
+      };
+      this.spaceships$ = this.dataService.getSpaceships();
 
-  createForms() {
-    this.searchForm = this.formBuilder.group({
-      planet: new FormGroup({
-        pick_up: new FormControl('', Validators.required),
-        drop_off: new FormControl()
-      }),
-      rentalStart: new FormGroup({
-        date: new FormControl({}, Validators.required),
-        time: new FormControl({}, Validators.required)
-      }),
-      rentalEnd: new FormGroup({
-        date: new FormControl('', Validators.required),
-        time: new FormControl('', Validators.required)
-      }),
+      this.searchForm = this.formBuilder.group({
+        planet: new FormGroup({
+          pick_up: new FormControl(queryParams.planet, Validators.required),
+          drop_off: new FormControl()
+        }),
+        rentalStart: new FormGroup({
+          date: new FormControl(Utils.dateToNgbDate(queryParams.rentalStart), Validators.required),
+          time: new FormControl({}, Validators.required)
+        }),
+        rentalEnd: new FormGroup({
+          date: new FormControl(Utils.dateToNgbDate(queryParams.rentalEnd), Validators.required),
+          time: new FormControl('', Validators.required)
+        }),
+      });
+
+      // this.spaceships$ = combineLatest(
+      //   this.dataService.getSpaceships(),
+      //   this.searchForm.get('planet').valueChanges
+      //     .pipe(startWith({}), debounceTime(200))
+      // )
+      //   .pipe(map(([spaceships, searchObj]) => {
+      //     return spaceships;
+      //     // return spaceships.filter(p => {
+      //     //   return p.currentLocalization === searchObj.pick_up;
+      //     // });
+      //   }));
     });
   }
 

@@ -1,9 +1,136 @@
-<section class="container-fluid">
-  <ngb-alert class="alert alert-dark my-2">
-    <strong class="text-dark">Tired of paying for fuel you don't use? </strong>
-    <span class="text-dark">Every spaceship we provide comes with a Full to Full fuel policy – or a Pre-Purchase policy that refunds you for unused fuel.</span>
-  </ngb-alert>
-  <div class="row">
+<ngb-alert class="alert alert-dark my-2 m-4">
+  <strong class="text-dark">Tired of paying for fuel you don't use? </strong>
+  <span class="text-dark">Every spaceship we provide comes with a Full to Full fuel policy – or a Pre-Purchase policy that refunds you for unused fuel.</span>
+</ngb-alert>
+<section class="d-flex flex-column align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form [formGroup]="searchForm" class="tab-content pt-4">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="row d-flex pb-3">
+              <div formGroupName="planet" class="col-sm-12 col-md-12 col-lg-4 text-left">
+                <label for="planet0" class="text-dark text-uppercase">Select Pick-up planet</label>
+                <div class="input-group">
+                  <select name="planet" id="planet0" formControlName="pick_up" class="form-control" placeholder="dwdw">
+                    <option value="" disabled selected hidden>Select pick-up planet</option>
+                    <option *ngFor="let p of planets" [ngValue]="p">{{p}}</option>
+                  </select>
+                  <div class="input-group-append select-arrow-append">
+                    <button disabled>
+                      <i class="icon-regular i-Arrow-Down-3"></i>
+                    </button>
+                  </div>
+                </div>
+                <label *ngIf="searchForm.dirty" class="checkbox checkbox-outline-primary mt-2" [@animate]="{value:'*',params:{delay: '300ms', y:'50px'}}">
+                  <input type="checkbox" [(ngModel)]="dropOffPlanet" [ngModelOptions]="{standalone: true}" (ngModelChange)="dropOffCheckboxChange($event)">
+                  <span class="text-dark">Drop off to another planet</span>
+                  <span class="checkmark"></span>
+                </label>
+                <div *ngIf="!dropOffPlanet" [@animate]="{value:'*',params:{delay: '300ms', y:'50px'}}">
+                  <label for="planet1" class="text-dark text-uppercase">Select drop off planet</label>
+                  <div class="input-group">
+                    <select name="planet" id="planet1" formControlName="drop_off" class="form-control">
+                      <option value="" disabled selected hidden>Select drop off planet</option>
+                      <option *ngFor="let d of planets" [ngValue]="d">{{d}}</option>
+                    </select>
+                    <div class="input-group-append select-arrow-append">
+                      <button disabled>
+                        <i class="icon-regular i-Arrow-Down-3"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div formGroupName="rentalStart" class="col-sm-12 col-md-12 col-lg-4 text-left">
+                <div class="row">
+                  <div class="col-sm-8 col-md-8 text-left">
+                    <label for="picker0" class="text-dark text-uppercase">Pick-up date</label>
+                    <div class="input-group">
+                      <input id="picker0" formControlName="date" class="form-control" placeholder="yyyy-mm-dd" name="dp0"
+                             ngbDatepicker #dp0="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-secondary" (click)="dp0.toggle()" type="button">
+                          <i class="icon-regular i-Calendar-4"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 col-md-4 text-left pl-0 pr-0">
+                    <label for="picker1" class="text-dark text-uppercase">Pick-up time</label>
+                    <ngb-timepicker id="picker1" formControlName="time"></ngb-timepicker>
+                  </div>
+                </div>
+              </div>
+              <div formGroupName="rentalEnd" class="col-sm-12 col-md-12 col-lg-4 text-left">
+                <div class="row">
+                  <div class="col-sm-8 col-md-8 text-left">
+                    <label for="picker2" class="text-dark text-uppercase">Drop off date</label>
+                    <div class="input-group">
+                      <input id="picker2" formControlName="date" class="form-control" placeholder="yyyy-mm-dd" name="dp1"
+                             ngbDatepicker #dp1="ngbDatepicker">
+                      <div class="input-group-append">
+                        <button class="btn btn-secondary" (click)="dp1.toggle()" type="button">
+                          <i class="icon-regular i-Calendar-4"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 col-md-4 text-left pl-0">
+                    <label for="picker3" class="text-dark text-uppercase">Drop off time</label>
+                    <ngb-timepicker id="picker3" formControlName="time"></ngb-timepicker>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <fieldset class="form-group text-left mt-2">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <label class="d-block text-dark text-uppercase">Pilot's age
+                    <i class="i-Information mr-1 pointer info" popoverTitle="Pilot's age" placement="right"
+                       ngbPopover="Young pilots are required to pay a “Young Pilot Fee”, indicated in Special Rental Conditions. The amount changes according to the age range (19-21 years or 22-24 years) and is automatically added on top of the rental cost.">
+                    </i></label>
+                  <div class="form-check d-inline mr-2">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                           value="option1" checked>
+                    <label class="form-check-label" for="gridRadios1">
+                      19-21
+                    </label>
+                  </div>
+                  <div class="form-check d-inline mr-2">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                           value="option2">
+                    <label class="form-check-label" for="gridRadios2">
+                      22-24
+                    </label>
+                  </div>
+                  <div class="form-check d-inline">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
+                           value="option3">
+                    <label class="form-check-label" for="gridRadios3">
+                      25+
+                    </label>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                  <label class="checkbox checkbox-outline-primary">
+                    <input type="checkbox">
+                    <span class="text-uppercase">Promo code</span>
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                  <btn-loading type="submit" class="{{selectedTab}} float-right" [disabled]="searchForm.invalid || loading"
+                               (click)="continue()" [loading]="loading">Continue</btn-loading>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row my-2 m-4">
     <div class="col-lg-6" *ngFor="let item of spaceships$ | async | paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index" [@animate]="{value:'*',params:{delay: (i*100)+'ms', y:'50px'}}">
       <div class="card card-ecommerce-3 {{item.category}} o-hidden mb-4">
         <div class="d-flex">
@@ -13,20 +140,28 @@
           <div class="flex-grow-1 p-4">
             <div class="row">
               <div class="col-12">
-                <h4 class="m-0 font-weight-bold text-muted">{{item.name}}</h4>
-                <p class="m-0 text-small text-muted">{{item.category}}</p>
-                <p class="m-0">{{item?.price?.sale | currency:'PLN'}}
-                  <del>{{item?.price?.previous | currency:'PLN'}}</del>
-                </p>
-                <p class="m-0 text-muted text-small w-15 w-sm-100 d-none d-lg-block item-badges">
-                  <span class="badge badge-{{item?.badge?.color}}">{{item?.badge?.text}}</span>
-                </p>
+                <div class="row">
+                  <div class="col-6">
+                    <h4 class="m-0 font-weight-bold text-muted">{{item.name}} <small class="text-muted font-weight-light">or similar</small></h4>
+                  </div>
+                  <div class="col-6">
+                    <div class="card-price float-right">
+                      <p class="m-0"><strong>{{item?.price?.sale | currency:'PLN'}} </strong>
+                        <del>{{item?.price?.previous | currency:'PLN'}}</del>
+                      </p>
+                      <small class="text-muted float-right">Price for 3 days <span class="badge badge-{{item?.badge?.color}}">{{item?.badge?.text}}</span></small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
                 <div class="row">
                   <div class="col-6" *ngFor="let feature of item.features">
                     <i class="icon-regular i-{{feature?.icon}}"></i> {{feature?.text}}
                   </div>
                 </div>
-                <button class="btn btn-primary btn-lg float-right">Book now</button>
+                <p class="m-0 text-small text-muted chip my-2 {{item.category}} float-left">{{item.category}}</p>
+                <button class="btn btn-primary btn-lg float-right mt-2">Book now</button>
               </div>
             </div>
           </div>
