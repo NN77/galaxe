@@ -19,10 +19,10 @@ export class SpaceshipsDB {
           'previous': 25
         },
         'features': [
-          'automatic gearbox',
-          '4 luggage',
-          '5 seats',
-          'A/C yes'
+          { icon: 'Calendar-4', text: 'automatic gearbox' },
+          { icon: 'Calendar-4', text: '4 luggage' },
+          { icon: 'Calendar-4', text: '5 seats' },
+          { icon: 'Calendar-4', text: 'automatic gearbox' }
         ],
         'photo': './assets/images/spaceships/cruiser-1.jpg',
         'gallery': [
@@ -73,7 +73,7 @@ export class SpaceshipsDB {
         'name': 'Corvette',
         'subtitle': 'the smallest type of rated warship',
         'description': 'The word “corvette” comes from the Dutch word corf, which means “small ship,” and indeed corvettes are historically the smallest type of rated warship (a rating system used by the British Royal Navy in the sailing age, basically referring to the amount of men/guns on the vessel and its relative size; corvettes were of the sixth and smallest rate).  In complete honesty I have not found much information on what role corvettes tended to employ; or at least nothing extremely concrete.  By all rights, early corvettes are essentially just smaller, less effective frigates; they were more lightly armored and armed than frigates, while not being as quick or maneuverable.',
-        'category': 'standard',
+        'category': 'gxefast',
         'currentLocalization': 'Neptune',
         'tags': [
           'small',

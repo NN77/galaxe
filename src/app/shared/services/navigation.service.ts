@@ -49,10 +49,10 @@ export class NavigationService {
 
     defaultMenu: IMenuItem[] = [
         {
-            name: 'Home',
+            name: 'Filter',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
             type: 'dropDown',
-            icon: 'i-Bar-Chart'
+            icon: 'i-Filter'
         }
     ];
 

@@ -6,6 +6,9 @@ import { AuthService } from '../../../../services/auth.service';
   templateUrl: './home-header.component.html',
   styleUrls: ['./home-header.component.css']
 })
+/**
+ * Component that renders the Home header template
+ */
 export class HomeHeaderComponent implements OnInit {
   notifications: any[];
 

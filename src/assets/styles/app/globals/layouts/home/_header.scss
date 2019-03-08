@@ -1,7 +1,5 @@
 .layout-home {
   .main-header {
-    padding: 0 8rem;
-    position: fixed;
     width: 100%;
     height: $topbar-height;
     box-shadow: 0 1px 15px rgba(0, 0, 0, .04), 0 1px 6px rgba(0, 0, 0, .04);
@@ -32,6 +30,7 @@
         max-width: 120px;
         margin: 0 auto;
         display: block;
+        outline: none;
       }
     }
 

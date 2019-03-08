@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -14,7 +13,6 @@ import { HomeRoutingModule } from './home-routing.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxDatatableModule,
     NgxPaginationModule,
     NgbModule,
     SharedComponentsModule,

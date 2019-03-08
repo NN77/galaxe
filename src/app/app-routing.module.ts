@@ -60,6 +60,16 @@ const routes: Routes = [
     ]
   },
   {
+    path: '',
+    component: HomeLayoutComponent,
+    children: [
+      {
+        path: 'others',
+        loadChildren: './views/others/others.module#OthersModule'
+      }
+    ]
+  },
+  {
     path: '**',
     redirectTo: 'others/404'
   }

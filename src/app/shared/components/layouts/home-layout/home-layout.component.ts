@@ -7,6 +7,9 @@ import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
   templateUrl: './home-layout.component.html',
   styleUrls: ['./home-layout.component.css']
 })
+/**
+ * Component that renders the Homepage layout template
+ */
 export class HomeLayoutComponent implements OnInit {
   moduleLoading: boolean;
   @ViewChild(PerfectScrollbarDirective) perfectScrollbar: PerfectScrollbarDirective;

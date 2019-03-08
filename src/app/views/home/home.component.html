@@ -151,11 +151,12 @@
   </div>
 </div>
 
-<div class="row wide-container mt-4 mb-4">
-  <div *ngIf="(spaceships$ | async)?.length" class="col-12">
-    <button class="btn btn-sm btn-rounded btn-outline-light btn-svg mr-2" [ngClass]="{active: viewMode === 'grid'}"
-            (click)="viewMode = 'grid'">
-      <svg version="1.1" width="16px" id="grid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+<section class="container">
+  <div class="row mt-4 mb-4">
+    <div *ngIf="(spaceships$ | async)?.length" class="col-12">
+      <button class="btn btn-sm btn-rounded btn-outline-light btn-svg mr-2" [ngClass]="{active: viewMode === 'grid'}"
+              (click)="viewMode = 'grid'">
+        <svg version="1.1" width="16px" id="grid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px" y="0px" viewBox="0 0 369.946 369.946" style="enable-background:new 0 0 369.946 369.946;" xml:space="preserve">
         <path d="M250.609,0h-11.934H131.271h-11.934H0v119.337v11.934v107.404v11.934v119.337h119.337h11.934
             h107.404h11.934h119.337V250.609v-11.934V131.271v-11.934V0H250.609z M238.675,11.934v107.404H131.271V11.934H238.675z
@@ -164,52 +165,163 @@
              M358.012,358.012H250.609V250.609h107.404V358.012z M358.012,238.675H250.609V131.271h107.404V238.675z M250.609,119.337V11.934
             h107.404v107.404H250.609z" />
       </svg>
-    </button>
-    <button class="btn btn-sm btn-rounded btn-outline-light btn-svg" [ngClass]="{active: viewMode === 'list'}"
-            (click)="viewMode = 'list'">
-      <svg version="1.1" id="list" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+      </button>
+      <button class="btn btn-sm btn-rounded btn-outline-light btn-svg" [ngClass]="{active: viewMode === 'list'}"
+              (click)="viewMode = 'list'">
+        <svg version="1.1" id="list" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
         y="0px" width="16px" height="16px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
         <path d="M0,97.92v24.48h612V97.92H0z M0,318.24h612v-24.48H0V318.24z M0,514.08h612V489.6H0V514.08z" />
       </svg>
-    </button>
-    <p class="d-inline ml-3">Available spaceships in selected localization listed below</p>
+      </button>
+      <p class="d-inline ml-3">Available spaceships in selected localization listed below</p>
+    </div>
   </div>
-</div>
-
-<div class="row wide-container" [ngClass]="{'list-horizontal': viewMode === 'list', 'list-grid': viewMode === 'grid'}">
-  <div *ngIf="!(spaceships$ | async)?.length && searchForm.dirty" class="col-12">
-    <p><strong>There are no spaceships for the selected planet, dates or time.</strong><p>
-    <p>We advise you to try other planet, days or time.<p>
-  </div>
-  <div *ngFor="let item of spaceships$ | async | paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index"
-       class="list-item"
-       [ngClass]="{'col-md-12': viewMode === 'list', 'col-md-3': viewMode === 'grid'}"
-       [@animate]="{value:'*',params:{delay: (i*100)+'ms', y:'50px'}}"
-  >
-    <div class="card o-hidden mb-4 d-flex"
-         [ngClass]="{'flex-row': viewMode === 'list', 'flex-column': viewMode === 'grid'}">
-      <div class="list-thumb d-flex">
-        <img [src]="item.photo" alt="">
+  <div class="row" [ngClass]="{'list-horizontal': viewMode === 'list', 'list-grid': viewMode === 'grid'}">
+    <div *ngIf="!(spaceships$ | async)?.length && searchForm.dirty" class="col-12">
+      <p><strong>There are no spaceships for the selected planet, dates or time.</strong><p>
+      <p>We advise you to try other planet, days or time.<p>
+    </div>
+    <div *ngFor="let item of spaceships$ | async | paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index"
+         class="list-item"
+         [ngClass]="{'col-md-12': viewMode === 'list', 'col-md-3': viewMode === 'grid'}"
+         [@animate]="{value:'*',params:{delay: (i*100)+'ms', y:'50px'}}"
+    >
+      <div class="card o-hidden mb-4 d-flex"
+           [ngClass]="{'flex-row': viewMode === 'list', 'flex-column': viewMode === 'grid'}">
+        <div class="list-thumb d-flex">
+          <img [src]="item.photo" alt="">
+        </div>
+        <div class="flex-grow-1" [ngClass]="{'pl-2 d-flex': viewMode === 'list', 'd-bock': viewMode === 'grid'}">
+          <div class="card-body align-self-center d-flex flex-column justify-content-between align-items-lg-center"
+               [ngClass]="{'flex-lg-row': viewMode === 'list'}">
+            <a href="#" class="w-40 w-sm-100">
+              <div class="item-title">{{item.name}}</div>
+            </a>
+            <p class="m-0 text-muted text-small w-15 w-sm-100">{{item.category}}</p>
+            <p class="m-0 text-muted text-small w-15 w-sm-100">
+              {{item?.price?.sale | currency:'PLN'}}
+              <del class="text-secondary">{{item?.price?.previous | currency:'PLN'}}</del>
+            </p>
+            <p class="m-0 text-muted text-small w-15 w-sm-100 d-none d-lg-block item-badges">
+              <span class="badge badge-{{item?.badge?.color}}">{{item?.badge?.text}}</span>
+            </p>
+          </div>
+        </div>
       </div>
-      <div class="flex-grow-1" [ngClass]="{'pl-2 d-flex': viewMode === 'list', 'd-bock': viewMode === 'grid'}">
-        <div class="card-body align-self-center d-flex flex-column justify-content-between align-items-lg-center"
-             [ngClass]="{'flex-lg-row': viewMode === 'list'}">
-          <a href="#" class="w-40 w-sm-100">
-            <div class="item-title">{{item.name}}</div>
-          </a>
-          <p class="m-0 text-muted text-small w-15 w-sm-100">{{item.category}}</p>
-          <p class="m-0 text-muted text-small w-15 w-sm-100">
-            {{item?.price?.sale | currency:'PLN'}}
-            <del class="text-secondary">{{item?.price?.previous | currency:'PLN'}}</del>
-          </p>
-          <p class="m-0 text-muted text-small w-15 w-sm-100 d-none d-lg-block item-badges">
-            <span class="badge badge-{{item?.badge?.color}}">{{item?.badge?.text}}</span>
-          </p>
+    </div>
+    <div class="col-md-12 mt-3" *ngIf="(spaceships$ | async)?.length">
+      <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
+    </div>
+  </div>
+</section>
+
+<section class="wide-container my-5">
+  <h2 class="h1-responsive font-weight-bold text-center my-5">Why is it so great?</h2>
+  <p class="lead grey-text text-center w-responsive mx-auto mb-5">Lorem ipsum dolor sit amet, consectetur
+    adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+    veniam.</p>
+
+  <div class="row">
+    <div class="col-lg-7 text-center text-lg-left">
+      <img class="img-fluid" src="assets/images/normandy-sr1.png" alt="">
+    </div>
+    <div class="col-lg-5">
+      <div class="row mb-3">
+        <div class="col-1">
+          <i class="icon-regular i-Calendar-4"></i>
+        </div>
+        <div class="col-xl-10 col-md-11 col-10">
+          <h5 class="font-weight-bold mb-3">Safety</h5>
+          <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam,
+            quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-1">
+          <i class="icon-regular i-Calendar-4"></i>
+        </div>
+        <div class="col-xl-10 col-md-11 col-10">
+          <h5 class="font-weight-bold mb-3">Technology</h5>
+          <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima veniam,
+            quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-1">
+          <i class="icon-regular i-Calendar-4"></i>
+        </div>
+        <div class="col-xl-10 col-md-11 col-10">
+          <h5 class="font-weight-bold mb-3">Finance</h5>
+          <p class="grey-text mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit enim ad minima
+            veniam, quis nostrum exercitationem ullam. Reprehenderit maiores aperiam assumenda deleniti hic.</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-12 mt-3" *ngIf="(spaceships$ | async)?.length">
-    <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
+</section>
+
+<section class="container text-center my-5">
+  <h2 class="h1-responsive font-weight-bold my-5">Recent posts</h2>
+  <p class="dark-grey-text w-responsive mx-auto mb-5">Duis aute irure dolor in reprehenderit in voluptate velit
+    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+    qui officia deserunt mollit anim id est laborum.</p>
+
+  <div class="row">
+    <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+      <div class="view overlay rounded z-depth-2 mb-4">
+        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/81.jpg" alt="Sample image">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+      <a href="#!" class="pink-text">
+        <h6 class="font-weight-bold mb-3"><i class="fas fa-map pr-2"></i>Breaking News</h6>
+      </a>
+      <h4 class="font-weight-bold mb-3"><strong>Title of the news</strong></h4>
+      <p>by <a class="font-weight-bold">Billy Forester</a>, 15/07/2018</p>
+      <p class="dark-grey-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
+        quo minus id quod maxime placeat facere possimus voluptas.</p>
+      <button class="btn btn-warning btn-rounded">Read more</button>
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
+      <div class="view overlay rounded z-depth-2 mb-4">
+        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Sample image">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+      <a href="#!" class="deep-orange-text">
+        <h6 class="font-weight-bold mb-3"><i class="fas fa-graduation-cap pr-2"></i>Earth</h6>
+      </a>
+      <h4 class="font-weight-bold mb-3"><strong>Title of the news</strong></h4>
+      <p>by <a class="font-weight-bold">Billy Forester</a>, 13/07/2018</p>
+      <p class="dark-grey-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+        voluptatum deleniti atque corrupti quos dolores.</p>
+      <button class="btn btn-warning btn-rounded">Read more</button>
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-0">
+      <div class="view overlay rounded z-depth-2 mb-4">
+        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/13.jpg" alt="Sample image">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+
+      <a href="#!" class="blue-text">
+        <h6 class="font-weight-bold mb-3"><i class="fas fa-fire pr-2"></i>Universe</h6>
+      </a>
+      <h4 class="font-weight-bold mb-3"><strong>Title of the news</strong></h4>
+      <p>by <a class="font-weight-bold">Billy Forester</a>, 11/07/2018</p>
+      <p class="dark-grey-text">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
+        quia consequuntur magni dolores eos qui ratione.</p>
+      <button class="btn btn-warning btn-rounded">Read more</button>
+
+    </div>
   </div>
-</div>
+</section>

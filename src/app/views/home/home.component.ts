@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { Observable, combineLatest } from 'rxjs';
 import { startWith, debounceTime, switchMap, map } from 'rxjs/operators';
 
@@ -39,7 +39,6 @@ export class HomeComponent implements OnInit {
       .pipe(map(([spaceships, searchObj]) => {
         return spaceships.filter(p => {
           return p.currentLocalization === searchObj.pick_up;
-          // return p.currentLocalization.toLowerCase().indexOf(searchObj.toLowerCase()) > -1;
         });
       }));
   }
@@ -72,6 +71,8 @@ export class HomeComponent implements OnInit {
   continue() {
     this.loading = true;
     this.searchForm.disable();
+    const query = this.searchForm.getRawValue();
+    console.log(query);
   }
 
 }
