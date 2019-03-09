@@ -15,4 +15,10 @@ export class Utils {
     date = new Date(date);
     return { month: date.getMonth() + 1, day: date.getDate(), year: date.getFullYear() };
   }
+  static differenceInDays(firstDate, secondDate) {
+    if (!firstDate || !secondDate) {
+      return null;
+    }
+    return Math.round((new Date(secondDate).valueOf() - new Date(firstDate).valueOf()) / (1000 * 60 * 60 * 24));
+  }
 }

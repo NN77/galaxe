@@ -6,7 +6,8 @@ import { debounceTime, map, startWith } from 'rxjs/operators';
 
 import { DataService } from '../../../../shared/services/data.service';
 import { SharedAnimations } from '../../../../shared/animations/shared-animations';
-import {Utils} from "../../../../shared/utils";
+import { Utils } from '../../../../shared/utils';
+import { CustomValidators } from '../../../../shared/validators';
 
 @Component({
   selector: 'app-spaceships-list',
@@ -17,23 +18,24 @@ import {Utils} from "../../../../shared/utils";
 export class SpaceshipsListComponent implements OnInit {
   selectedTab = 'spaceships';
   dropOffPlanet = true;
-  viewMode: 'list' | 'grid' = 'grid';
   page = 1;
   pageSize = 8;
   spaceships$: Observable<any[]>;
   searchForm: FormGroup;
   planets: string[] = ['Earth', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune'];
   loading = false;
+  rentalDays: number;
 
   constructor(
     private dataService: DataService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute
+
   ) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      // params below should be used to backend GET call,
+      // params below should be used for backend GET call,
       // for demo purposes they're not passed to inMemoryDB internal call
       const queryParams = {
         category: 'standard',
@@ -49,14 +51,35 @@ export class SpaceshipsListComponent implements OnInit {
           drop_off: new FormControl()
         }),
         rentalStart: new FormGroup({
-          date: new FormControl(Utils.dateToNgbDate(queryParams.rentalStart), Validators.required),
-          time: new FormControl({}, Validators.required)
+          date_start: new FormControl(Utils.dateToNgbDate(queryParams.rentalStart), Validators.required),
+          time_start: new FormControl({}, Validators.required)
         }),
         rentalEnd: new FormGroup({
-          date: new FormControl(Utils.dateToNgbDate(queryParams.rentalEnd), Validators.required),
-          time: new FormControl('', Validators.required)
+          date_end: new FormControl(Utils.dateToNgbDate(queryParams.rentalEnd), Validators.required),
+          time_end: new FormControl('', Validators.required)
         }),
+        rentalRange: new FormControl({ value: 0 }, [Validators.required, CustomValidators.rantalRangeValidator(1, 15)])
       });
+
+      // TODO complex strategy of retrieving rental dates range + validation using Utils
+      // ugly copied from home component
+      this.searchForm.get('rentalStart').valueChanges.subscribe( (rentalStartValChanged) => {
+        const currentRentalEndDate = this.searchForm.controls['rentalEnd'].value;
+        const rentalRangeUpdated = Utils.differenceInDays(
+          Utils.ngbDateToDate(rentalStartValChanged['date_start']),
+          Utils.ngbDateToDate(currentRentalEndDate['date_end'])
+        );
+        this.searchForm.patchValue({ rentalRange: rentalRangeUpdated });
+      });
+      // TODO complex strategy of retrieving rental dates range + validation using Utils
+      // ugly copied from home component
+      this.searchForm.get('rentalEnd').valueChanges.subscribe( (rentalEndValChanged) => {
+        const currentRentalStartDate = this.searchForm.controls['rentalStart'].value;
+        const rentalRangeUpdated = Utils.differenceInDays(Utils.ngbDateToDate(currentRentalStartDate['date_start']), Utils.ngbDateToDate(rentalEndValChanged['date_end']));
+        this.searchForm.patchValue({ rentalRange: rentalRangeUpdated });
+      });
+
+      this.rentalDays = Utils.differenceInDays(queryParams.rentalStart, queryParams.rentalEnd);
 
       // this.spaceships$ = combineLatest(
       //   this.dataService.getSpaceships(),
@@ -64,10 +87,9 @@ export class SpaceshipsListComponent implements OnInit {
       //     .pipe(startWith({}), debounceTime(200))
       // )
       //   .pipe(map(([spaceships, searchObj]) => {
-      //     return spaceships;
-      //     // return spaceships.filter(p => {
-      //     //   return p.currentLocalization === searchObj.pick_up;
-      //     // });
+      //     return spaceships.filter(p => {
+      //       return p.currentLocalization === searchObj.pick_up;
+      //     });
       //   }));
     });
   }

@@ -47,7 +47,7 @@
                   <div class="col-sm-8 col-md-8 text-left">
                     <label for="picker0" class="text-dark text-uppercase">Pick-up date</label>
                     <div class="input-group">
-                      <input id="picker0" formControlName="date" class="form-control" placeholder="yyyy-mm-dd" name="dp0"
+                      <input id="picker0" formControlName="date_start" class="form-control" placeholder="yyyy-mm-dd" name="dp0"
                              ngbDatepicker #dp0="ngbDatepicker">
                       <div class="input-group-append">
                         <button class="btn btn-secondary" (click)="dp0.toggle()" type="button">
@@ -58,7 +58,7 @@
                   </div>
                   <div class="col-sm-4 col-md-4 text-left pl-0 pr-0">
                     <label for="picker1" class="text-dark text-uppercase">Pick-up time</label>
-                    <ngb-timepicker id="picker1" formControlName="time"></ngb-timepicker>
+                    <ngb-timepicker id="picker1" formControlName="time_start"></ngb-timepicker>
                   </div>
                 </div>
               </div>
@@ -67,7 +67,7 @@
                   <div class="col-sm-8 col-md-8 text-left">
                     <label for="picker2" class="text-dark text-uppercase">Drop off date</label>
                     <div class="input-group">
-                      <input id="picker2" formControlName="date" class="form-control" placeholder="yyyy-mm-dd" name="dp1"
+                      <input id="picker2" formControlName="date_end" class="form-control" placeholder="yyyy-mm-dd" name="dp1"
                              ngbDatepicker #dp1="ngbDatepicker">
                       <div class="input-group-append">
                         <button class="btn btn-secondary" (click)="dp1.toggle()" type="button">
@@ -78,7 +78,7 @@
                   </div>
                   <div class="col-sm-4 col-md-4 text-left pl-0">
                     <label for="picker3" class="text-dark text-uppercase">Drop off time</label>
-                    <ngb-timepicker id="picker3" formControlName="time"></ngb-timepicker>
+                    <ngb-timepicker id="picker3" formControlName="time_end"></ngb-timepicker>
                   </div>
                 </div>
               </div>
@@ -120,7 +120,7 @@
                   </label>
                 </div>
                 <div class="col-sm-12 col-md-3">
-                  <btn-loading type="submit" class="{{selectedTab}} float-right" [disabled]="searchForm.invalid || loading"
+                  <btn-loading type="submit" class="float-right" [disabled]="searchForm.invalid || loading"
                                (click)="continue()" [loading]="loading">Continue</btn-loading>
                 </div>
               </div>
@@ -132,12 +132,13 @@
   </div>
   <div class="row my-2 m-4">
     <div class="col-lg-6" *ngFor="let item of spaceships$ | async | paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index" [@animate]="{value:'*',params:{delay: (i*100)+'ms', y:'50px'}}">
-      <div class="card card-ecommerce-3 {{item.category}} o-hidden mb-4">
-        <div class="d-flex">
-          <div class="">
+      <div class="card card-ecommerce-3 {{item.category}} o-hidden m-2 pr-4">
+        <div class="row">
+          <div class="col-4">
             <img class="card-img-left" [src]="item.photo" alt="">
+            <span class="text-small text-muted chip chip-item my-2 {{item.category}}">{{item.category}}</span>
           </div>
-          <div class="flex-grow-1 p-4">
+          <div class="col-8 pt-4">
             <div class="row">
               <div class="col-12">
                 <div class="row">
@@ -146,10 +147,12 @@
                   </div>
                   <div class="col-6">
                     <div class="card-price float-right">
-                      <p class="m-0"><strong>{{item?.price?.sale | currency:'PLN'}} </strong>
-                        <del>{{item?.price?.previous | currency:'PLN'}}</del>
-                      </p>
-                      <small class="text-muted float-right">Price for 3 days <span class="badge badge-{{item?.badge?.color}}">{{item?.badge?.text}}</span></small>
+                      <small class="float-right mt-2 ml-1">per day</small>
+                      <p class="m-0 float-right"><strong>{{item?.price?.sale | currency:'EUR'}} </strong>
+                        <del>{{item?.price?.previous | currency:'EUR'}}</del>
+                      </p><br>
+                      <small *ngIf="rentalDays" class="text-muted float-right"><span class="badge badge-{{item?.badge?.color}} mr-2">{{item?.badge?.text}}</span>{{item?.price?.sale * rentalDays | currency:'EUR'}} total for {{rentalDays}} days</small>
+                      <small *ngIf="!rentalDays" class="text-muted float-right"><span class="badge badge-{{item?.badge?.color}} mr-2">{{item?.badge?.text}}</span>{{item?.price?.sale | currency:'EUR'}}</small>
                     </div>
                   </div>
                 </div>
@@ -160,8 +163,14 @@
                     <i class="icon-regular i-{{feature?.icon}}"></i> {{feature?.text}}
                   </div>
                 </div>
-                <p class="m-0 text-small text-muted chip my-2 {{item.category}} float-left">{{item.category}}</p>
-                <button class="btn btn-primary btn-lg float-right mt-2">Book now</button>
+                <div class="row mt-2">
+                  <div class="col-8">
+                    <p>{{item.description | excerpt:80}}</p>
+                  </div>
+                  <div class="col-4 text-right">
+                    <button class="btn btn-primary btn-lg float-right mt-2">Book now</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

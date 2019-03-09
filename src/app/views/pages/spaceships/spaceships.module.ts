@@ -8,6 +8,7 @@ import { SpaceshipsListComponent } from './spaceships-list/spaceships-list.compo
 import { SpaceshipsDetailComponent } from './spaceships-detail/spaceships-detail.component';
 import { SpaceshipsRoutingModule } from './spaceships-routing.module';
 import { SharedComponentsModule } from '../../../shared/components/shared-components.module';
+import { SharedPipesModule } from '../../../shared/pipes/shared-pipes.module';
 
 const components = [
   SpaceshipsListComponent,
@@ -22,6 +23,7 @@ const components = [
     NgbModule,
     NgxPaginationModule,
     SharedComponentsModule,
+    SharedPipesModule,
     SpaceshipsRoutingModule
   ],
   declarations: components
