@@ -1,7 +1,7 @@
 export class SpaceshipsDB {
   public static spaceships = [
     {
-      '_id': '5a9ae2106518248b68251fdf',
+      '_id': 'cd258dde-4764-4fd8-9db9-c426af2fff97',
       'name': 'Cruiser',
       'subtitle': 'cruiser warship',
       'description': 'In the Age of Sail “cruiser” was a term used to describe ships which underwent “cruising missions;” that is independent scouting, raiding, and commerce protection missions.  These “cruiser warships” were normally frigates and sloops because there simply wasn’t anything else available at the time.  By the mid 1800s ships began being constructed that were specifically designed for this sort of work, and as such were called “cruisers”.  They could be smaller, like a frigate, or larger, but it was not until the 20th Century that they were consistently scaled to be larger than a destroyer but smaller than a battleship.',
@@ -51,7 +51,7 @@ export class SpaceshipsDB {
       }
     },
     {
-      '_id': '3gf94y5hi8248b68251fdf',
+      '_id': '0742cbf6-0c93-4e47-9f1f-ebb0ac011c3c',
       'name': 'Destroyer',
       'subtitle': 'faster and more maneuverable than larger ships',
       'description': 'Destroyers are comparatively modern ships.&nbsp; Historically, they were designed after the emergence of&nbsp;torpedo boats (quick, frigate-like ships which employed newly invented self-propelled torpedoes as their main arms) in the late 1800s.&nbsp; Torpedo boats were <strong>faster and more maneuverable than larger ships</strong>, able to bear down on a battlecruiser&nbsp;and take it out with its torpedoes.&nbsp; Destroyers were originally designed as, and named, <em>torpedo boat destroyers,</em> but at some point became referred to simply as <em>destroyers</em> when their roles expanded.&nbsp; They went through many iterations, but were essentially smaller cruisers designed with the sole purpose of <strong>hunting down and <em>destroying</em> torpedo boats</strong>, and <strong>had much more powerful weaponry&nbsp;as well as&nbsp;torpedoes</strong> to fulfill this purpose.&nbsp; As such, they were employed as <strong>escorts</strong> for larger, slower warships (to protect those warships from torpedo boats).&nbsp; They were designed to have the <strong>long&nbsp;range and speed&nbsp;to keep up with their fleet</strong>, and over time&nbsp;this fact plus their&nbsp;multi-purpose capabilities meant that destroyers began seeing more use as&nbsp;<strong>advanced scouts</strong> for a fleet as well as <strong>direct fleet combatants</strong>,<strong> anti-submariners</strong>, and <strong>anti-submarine patrol</strong>.&nbsp; <strong>Destroyers&nbsp;operated in destroyer divisions or units composed of multiple destroyers</strong> in order to carry out these tasks.&nbsp; By WWII destroyers began filling in a niche as (what I’ll very simply call) <strong>anti-everything vessels</strong>, extremely powerful <strong>high-value targets </strong>due to<strong> the number of guns they would field</strong>.&nbsp; In fact, this pushed several countries to develop smaller corvettes and frigates as anti-submariners in order to take some of the heat off of destroyers.',
@@ -100,7 +100,7 @@ export class SpaceshipsDB {
       }
     },
     {
-      '_id': '67f6uh75h248b68251fdf',
+      '_id': '24573936-ad0a-44e0-98b4-c38665f67523',
       'name': 'Corvette',
       'subtitle': 'the smallest type of rated warship',
       'description': 'The word “corvette” comes from the Dutch word corf, which means “small ship,” and indeed corvettes are historically the smallest type of rated warship (a rating system used by the British Royal Navy in the sailing age, basically referring to the amount of men/guns on the vessel and its relative size; corvettes were of the sixth and smallest rate).  In complete honesty I have not found much information on what role corvettes tended to employ; or at least nothing extremely concrete.  By all rights, early corvettes are essentially just smaller, less effective frigates; they were more lightly armored and armed than frigates, while not being as quick or maneuverable.',
@@ -148,7 +148,7 @@ export class SpaceshipsDB {
       }
     },
     {
-      '_id': '82jr56jgb68255fc',
+      '_id': 'a4a001c9-7366-47c5-9794-fbc487c68e20',
       'name': 'Frigate',
       'subtitle': 'quick and maneuverable',
       'description': 'They are still known as frigates because they are lightly armed with only one deck of guns. Modern frigates are generally used as escorts for other warships and convoys.  As I mentioned earlier, frigates and corvettes really are very similar in their designs and roles; frigates just tend to be larger (and thus more expensive to build) and had more firepower, so they could engage in direct combat more effectively.',
@@ -194,7 +194,7 @@ export class SpaceshipsDB {
       }
     },
     {
-      '_id': '82jr56jgb68255fc',
+      '_id': 'c5121601-0d7a-48a5-8557-65d3f6e1c6ea',
       'name': 'Battlecruiser',
       'subtitle': 'considered capital ships',
       'description': 'They are similar to battleships, having a similar armament and size, but were generally faster and not as heavily armored by comparison.  Originally fielded by the UK in the early 20th Century, battlecruisers were designed to combat and destroyer slower, older armored cruisers through heavy gunfire.  As time went on (around WWI) they began seeing use as general-purpose ships alongside battleships by all manner of countries.  Unfortunately, battlecruisers were generally inferior to battleships, and in the Battle of Jutland this was perfectly exemplified as both navies lost battlecruisers but no battleships; the light armor of the battlecruisers made them easier targets for heavy guns.',
@@ -240,10 +240,10 @@ export class SpaceshipsDB {
       }
     },
     {
-      '_id': '82jr56jgb68255fc',
+      '_id': 'BnTzJ',
       'name': 'Carrier',
       'subtitle': 'considered capital ships',
-      'description': 'Aircraft carriers, like destroyers, are very modern classifications.  They are the one vessel in today’s navies that almost anyone can pick out at a glance without fear of mistaking them for something else.  This is due to their extremely obvious design; a very large, flat deck suitable for landing and deploying aircraft.  Put as simply as possible, carriers carry aircraft (whether plane or helicopter depends on the ship).  Historically, the concept of utilizing seagoing vessels for airborne operations was considered as far back as the early 1800s (though with balloons rather than planes).  It was not until the early 1900s, with the invention of seaplanes, that actual aircraft launched from a ship become prominent. ',
+      'description': 'Aircraft carriers, like destroyers, are very modern classifications.  They are the one vessel in today’s navies that almost anyone can pick out at a glance without fear of mistaking them for something else.  This is due to their extremely obvious design; a very large, flat deck suitable for landing and deploying aircraft.  Put as simply as possible, carriers carry aircraft (whether plane or helicopter depends on the ship).  Historically, the concept of utilizing seagoing vessels for airborne operations was considered as far back as the early 1800s (though with balloons rather than planes).',
       'category': {
         economy: false,
         compact: false,

@@ -110,6 +110,9 @@ ul[role="tablist"] {
   btn-loading[type="submit"] {
     padding: 0;
     border-bottom-right-radius: 10px;
+    &[ng-reflect-disabled="true"] {
+      opacity: 0.5;
+    }
     button {
       padding: 1rem 2rem;
       font-size: 1.3rem;
@@ -121,7 +124,7 @@ ul[role="tablist"] {
       display: block;
       width: 100%;
     }
-    &.spaceships {
+    &.spaceships, .economy, .compact {
       background-color: $primary;
     }
     &.premium {

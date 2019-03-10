@@ -17,7 +17,7 @@ import { CustomValidators } from '../../shared/validators';
 })
 export class HomeComponent implements OnInit {
   selectedTab = 'spaceships';
-  dropOffPlanet = true;
+  dropOffAnotherPlanet = false;
   viewMode: 'list' | 'grid' = 'grid';
   page = 1;
   pageSize = 8;
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
     this.spaceships$ = combineLatest(
       this.dataService.getSpaceships(),
       this.searchForm.get('planet').valueChanges
-        .pipe(startWith({}), debounceTime(200)),
+        .pipe(startWith({ pick_up: '', drop_off: '' }), debounceTime(200)),
       this.filtersForm.valueChanges
         .pipe(startWith({
           category: { economy: true, compact: true, premium: true, gxefast: true },
@@ -65,6 +65,7 @@ export class HomeComponent implements OnInit {
           return Object.values(filter).every(item => item === true);
         });
       }));
+
     // TODO complex strategy of retrieving rental dates range + validation using Utils
     this.searchForm.get('rentalStart').valueChanges.subscribe( (rentalStartValChanged) => {
       const currentRentalEndDate = this.searchForm.controls['rentalEnd'].value;
@@ -74,6 +75,7 @@ export class HomeComponent implements OnInit {
       );
       this.searchForm.patchValue({ rentalRange: rentalRangeUpdated });
     });
+
     // TODO complex strategy of retrieving rental dates range + validation using Utils
     this.searchForm.get('rentalEnd').valueChanges.subscribe( (rentalEndValChanged) => {
       const currentRentalStartDate = this.searchForm.controls['rentalStart'].value;
@@ -86,7 +88,7 @@ export class HomeComponent implements OnInit {
     this.searchForm = this.formBuilder.group({
       planet: new FormGroup({
         pick_up: new FormControl('', Validators.required),
-        drop_off: new FormControl()
+        drop_off: new FormControl('')
       }),
       rentalStart: new FormGroup({
         date_start: new FormControl({}, Validators.required),
@@ -96,7 +98,7 @@ export class HomeComponent implements OnInit {
         date_end: new FormControl('', Validators.required),
         time_end: new FormControl('', Validators.required)
       }),
-      rentalRange: new FormControl({ value: 0 }, [Validators.required, CustomValidators.rantalRangeValidator(1, 15)])
+      rentalRange: new FormControl(0, [Validators.required, CustomValidators.rantalRangeValidator(1, 15)])
     });
     this.filtersForm = this.formBuilder.group({
       category: new FormGroup({
@@ -122,12 +124,15 @@ export class HomeComponent implements OnInit {
   }
 
   dropOffCheckboxChange(e: boolean) {
-    this.dropOffPlanet = e;
+    this.dropOffAnotherPlanet = e;
   }
 
   continue() {
     if (this.searchForm.invalid) {
       return;
+    }
+    if (this.spaceships$) {
+
     }
     this.loading = true;
     this.searchForm.disable();
@@ -135,7 +140,8 @@ export class HomeComponent implements OnInit {
 
     const navigationExtras: NavigationExtras = {
       queryParams: {
-        'planet': query.planet.pick_up,
+        'planetPickup': query.planet.pick_up,
+        'planetDropoff': query.planet.drop_off,
         'rentalStart': Utils.ngbDateToDate(query.rentalStart.date_start, query.rentalStart.time_start),
         'rentalEnd': Utils.ngbDateToDate(query.rentalEnd.date_end, query.rentalEnd.time_end),
         'rentalRange': query.rentalRange

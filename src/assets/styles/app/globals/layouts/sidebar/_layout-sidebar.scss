@@ -17,6 +17,37 @@
   }
 }
 
+btn-loading {
+  padding: 0;
+  border-bottom-right-radius: 10px;
+  &[ng-reflect-disabled="true"] {
+    opacity: 0.5;
+  }
+  button[type="submit"] {
+    padding: 0;
+    font-size: 1rem;
+    font-family: $font-family-heading;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: $white !important;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+  }
+  &.spaceships, .economy, .compact {
+    background-color: $primary;
+    border-color: $primary;
+  }
+  &.premium {
+    background-color: $success;
+    border-color: $success;
+  }
+  &.gxefast {
+    background-color: $warning;
+    border-color: $warning;
+  }
+}
+
 .layout-sidebar {
   .sidebar-left-secondary,
   .sidebar-left {

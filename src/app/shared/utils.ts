@@ -28,4 +28,13 @@ export class Utils {
     }
     return Math.round((new Date(secondDate).valueOf() - new Date(firstDate).valueOf()) / (1000 * 60 * 60 * 24));
   }
+  static findInvalidControls(formControls) {
+    const invalid = [];
+    for (const name in formControls) {
+      if (formControls[name].invalid) {
+        invalid.push(name);
+      }
+    }
+    return invalid;
+  }
 }
