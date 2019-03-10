@@ -20,44 +20,46 @@ export class SidebarHeaderComponent implements OnInit {
         icon: 'i-Speach-Bubble-6',
         title: 'New message',
         badge: '3',
-        text: 'James: Hey! are you busy?',
+        text: 'Grab a great deal with us\n',
         time: new Date(),
         status: 'primary',
-        link: '/chat'
+        link: '/sessions/signin'
       },
       {
         icon: 'i-Receipt-3',
-        title: 'New order received',
-        badge: '$4036',
-        text: '1 Headphone, 3 iPhone x',
+        title: 'Your spaceship is ready to pick-up',
+        badge: 'hot',
+        text: 'Cruiser',
         time: new Date('11/11/2018'),
         status: 'success',
-        link: '/tables/full'
+        link: '/sessions/signin'
       },
       {
         icon: 'i-Empty-Box',
-        title: 'Product out of stock',
-        text: 'Headphone E67, R98, XL90, Q77',
+        title: 'Wherever you\'re off to, we\'ll find you the ideal spaceship',
+        text: 'Corvette',
         time: new Date('11/10/2018'),
         status: 'danger',
-        link: '/tables/list'
+        link: '/sessions/signin'
       },
       {
         icon: 'i-Data-Power',
-        title: 'Server up!',
-        text: 'Server rebooted successfully',
+        title: 'SALE NOW ON!\n',
+        text: '' +
+          'LOCK IN YOUR\n' +
+          'RENTAL',
         time: new Date('11/08/2018'),
         status: 'success',
-        link: '/dashboard/v2'
+        link: '/sessions/signin'
       },
       {
         icon: 'i-Data-Block',
-        title: 'Server down!',
-        badge: 'Resolved',
-        text: 'Region 1: Server crashed!',
+        title: 'HURRY! OFFER ENDS SOON',
+        badge: 'Sale',
+        text: '2019',
         time: new Date('11/06/2018'),
         status: 'danger',
-        link: '/dashboard/v3'
+        link: '/sessions/signin'
       }
     ];
   }

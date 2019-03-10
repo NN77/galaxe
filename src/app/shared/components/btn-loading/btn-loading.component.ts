@@ -5,9 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './btn-loading.component.html',
   styleUrls: ['./btn-loading.component.scss']
 })
-/**
- * Component that
- */
+
 export class BtnLoadingComponent implements OnInit {
   @Input('loading') loading: boolean;
   @Input('disabled') disabled: boolean;

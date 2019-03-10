@@ -51,8 +51,12 @@ export class HomeComponent implements OnInit {
       .pipe(map(([spaceships, searchObj, filterObj]) => {
         return spaceships.filter(p => {
           const filter = {
-            isCategoryOk: p.category.economy === filterObj.category.economy || p.category.compact === filterObj.category.compact ||
-              p.category.premium === filterObj.category.premium || p.category.gxefast === filterObj.category.gxefast,
+            // deserves for comment :) TODO to be moved to Object Utils comparison
+            // in current example category following filter(checkboxes) are allowed be multi-check
+            // changing .some method to .every will result exactly matched spaceships by exactly marked checkboxes
+            isCategoryOk: Object.keys(p.category).filter(categoryDataKey => filterObj.category[categoryDataKey] === true).some(categoryDataKey => {
+              return filterObj.category[categoryDataKey] === p.category[categoryDataKey];
+            }),
             isPlanetOk: p.currentLocalization === searchObj.pick_up,
             isTransmissionOk: p.transmission.automatic === filterObj.transmission.automatic || p.transmission.manual === filterObj.transmission.manual,
             isAcOk: p.ac.toString() === filterObj.ac,
@@ -132,8 +136,9 @@ export class HomeComponent implements OnInit {
     const navigationExtras: NavigationExtras = {
       queryParams: {
         'planet': query.planet.pick_up,
-        'rentalStart': Utils.ngbDateToDate(query.rentalStart.date_start),
-        'rentalEnd': Utils.ngbDateToDate(query.rentalEnd.date_end)
+        'rentalStart': Utils.ngbDateToDate(query.rentalStart.date_start, query.rentalStart.time_start),
+        'rentalEnd': Utils.ngbDateToDate(query.rentalEnd.date_end, query.rentalEnd.time_end),
+        'rentalRange': query.rentalRange
       }
     };
 

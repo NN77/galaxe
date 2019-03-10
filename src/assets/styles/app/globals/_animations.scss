@@ -8,6 +8,22 @@
     100% {transform: rotate(360deg)}
 }
 
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
 .spin {
     animation: spin 2s infinite linear;
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
 }
