@@ -48,6 +48,17 @@ btn-loading {
   }
 }
 
+.auth-content btn-loading {
+  button[type="submit"] {
+    font-family: inherit;
+    font-weight: normal;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+  }
+}
+
 .layout-sidebar {
   .sidebar-left-secondary,
   .sidebar-left {

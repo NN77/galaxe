@@ -49,7 +49,7 @@ export class NavigationService {
 
     defaultMenu: IMenuItem[] = [
         {
-            name: 'Filter',
+            name: 'Compare',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
             type: 'dropDown',
             icon: 'i-Filter'

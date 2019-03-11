@@ -134,14 +134,95 @@
       </div>
     </div>
   </div>
+
+  <section class="container">
+    <form [formGroup]="filtersForm" class="mt-4 mb-3">
+      <div class="row">
+        <div formGroupName="category" class="col-3">
+          <label class="text-dark text-uppercase"><i class="icon-regular i-Filter-2"></i> Category</label>
+          <div class="input-group">
+            <label class="checkbox checkbox-outline-primary col-sm-12 col-md-12 col-lg-6">
+              <input type="checkbox" name="economy" id="economy" formControlName="economy">
+              <span class="text-uppercase">economy</span>
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox checkbox-outline-primary col-sm-12 col-md-12 col-lg-6">
+              <input type="checkbox" name="compact" id="compact" formControlName="compact">
+              <span class="text-uppercase">compact</span>
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox checkbox-outline-primary col-sm-12 col-md-12 col-lg-6">
+              <input type="checkbox" name="premium" id="premium" formControlName="premium">
+              <span class="text-uppercase">premium</span>
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox checkbox-outline-primary col-sm-12 col-md-12 col-lg-6">
+              <input type="checkbox" name="gxefast" id="gxefast" formControlName="gxefast">
+              <span class="text-uppercase">gxefast</span>
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div formGroupName="transmission" class="col-3">
+          <label class="text-dark text-uppercase"><i class="icon-regular i-Filter-2"></i> Transmission</label>
+          <div class="input-group">
+            <label class="checkbox checkbox-outline-primary mr-3">
+              <input type="checkbox" name="automatic" id="automatic" formControlName="automatic">
+              <span class="text-uppercase">automatic</span>
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox checkbox-outline-primary">
+              <input type="checkbox" name="manual" id="manual" formControlName="manual">
+              <span class="text-uppercase">manual</span>
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div class="col-2">
+          <label class="text-dark text-uppercase"><i class="icon-regular i-Filter-2"></i> A/C</label>
+          <div class="input-group">
+            <div class="form-check d-inline mr-2">
+              <input class="form-check-input" type="radio" formControlName="ac" id="ac_yes" value="true" [checked]="true">
+              <label class="form-check-label" for="ac_yes">
+                Yes
+              </label>
+            </div>
+            <div class="form-check d-inline mr-2">
+              <input class="form-check-input" type="radio" formControlName="ac" id="ac_no" value="false">
+              <label class="form-check-label" for="ac_no">
+                No
+              </label>
+            </div>
+          </div>
+        </div>
+        <div formGroupName="fuel" class="col-3">
+          <label class="text-dark text-uppercase"><i class="icon-regular i-Filter-2"></i> Fuel</label>
+          <div class="input-group">
+            <label class="checkbox checkbox-outline-primary mr-3">
+              <input type="checkbox" name="petrol" id="petrol" formControlName="petrol">
+              <span class="text-uppercase">petrol</span>
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox checkbox-outline-primary">
+              <input type="checkbox" name="diesel" id="diesel" formControlName="diesel">
+              <span class="text-uppercase">diesel</span>
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+
   <div class="row my-2 m-4">
-    <div *ngIf="!(spaceships$ | async)?.length && searchForm.dirty" class="col-12 text-center"
+    <div *ngIf="!(spaceships$ | async)?.length" class="col-12 text-center"
          [@animate]="{value:'*',params:{delay: '300ms', y:'50px'}}">
       <p><strong>We're sorry, but there are no spaceships for the selected planet and filters</strong>
       <p>
       <p>We advise you to try other planet or modify filters
       <p>
     </div>
+
     <div class="col-lg-6"
          *ngFor="let item of spaceships$ | async | paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index"
          [@animate]="{value:'*',params:{delay: (i*100)+'ms', y:'50px'}}">
@@ -197,7 +278,7 @@
                   <div class="col-4 text-right">
                     <btn-loading
                       (click)="book(item._id)" [loading]="loading"
-                      class="btn btn-primary btn-lg float-right mt-2" [disabled]="searchForm.invalid || loading"
+                      class="btn btn-primary btn-lg booking_button float-right mt-2" [disabled]="searchForm.invalid || loading"
                       [ngClass]="{'economy' : item.category.economy, 'compact' : item.category.compact, 'premium' : item.category.premium, 'gxefast' : item.category.gxefast}">
                       Book now
                     </btn-loading>

@@ -4,81 +4,90 @@
       <div class="col-lg-12" [@animate]="{value:'*',params:{delay: '300ms', y:'50px'}}">
         <div class="card card-ecommerce-3 o-hidden m-2 p-5">
           <div class="row">
-            <p>Dear Tony Hawk, thanks for booking with Gala•xe - Spaceship rental.</p>
-            <p class="mb-4">Please see below your booking resume</p>
-            <div class="col-sm-12 col-md-12 col-lg-6">
-              <h5 class="text-primary">Reservation details</h5>
-              <dl class="row comment">
-                <dt class="col-sm-3">Booking Nº‭</dt>
-                <dd class="col-sm-9">{{booking.id}}</dd>
+            <div class="col-12">
+              <p>Dear Tony Hawk, thanks for booking with Gala•xe - Spaceship rental.</p>
+              <p class="mb-4">Please see below your booking resume</p>
+              <div class="row">
+                <div class="col-6">
+                  <h5 class="text-primary">Reservation details</h5>
+                  <dl class="row comment">
+                    <dt class="col-sm-3">Booking Nº‭</dt>
+                    <dd class="col-sm-9">{{booking.id}}</dd>
 
-                <dt class="col-sm-3">Booking status</dt>
-                <dd class="col-sm-9">Confirmed</dd>
+                    <dt class="col-sm-3">Booking status</dt>
+                    <dd class="col-sm-9">Confirmed</dd>
 
-                <dt class="col-sm-3">Main Driver</dt>
-                <dd class="col-sm-9">Tony Hawk</dd>
-              </dl>
+                    <dt class="col-sm-3">Main Driver</dt>
+                    <dd class="col-sm-9">Tony Hawk</dd>
+                  </dl>
 
-              <h5 class="text-primary">Spaceship details</h5>
-              <dl class="row comment">
-                <dt class="col-sm-3">Spaceship</dt>
-                <dd class="col-sm-9">{{booking.spaceship.name}}</dd>
+                  <h5 class="text-primary">Spaceship details</h5>
+                  <dl class="row comment">
+                    <dt class="col-sm-3">Spaceship</dt>
+                    <dd class="col-sm-9">{{booking.spaceship.name}}</dd>
 
-                <dt class="col-sm-3">Transmission</dt>
-                <dd class="col-sm-9" *ngIf="booking.spaceship.transmission.automatic">
-                  {{booking.spaceship.transmission.automatic}}
-                </dd>
-                <dd class="col-sm-9" *ngIf="booking.spaceship.transmission.manual">
-                  {{booking.spaceship.transmission.manual}}
-                </dd>
+                    <dt class="col-sm-3">Transmission</dt>
+                    <dd class="col-sm-9" *ngIf="booking.spaceship.transmission.automatic">
+                      {{booking.spaceship.transmission.automatic}}
+                    </dd>
+                    <dd class="col-sm-9" *ngIf="booking.spaceship.transmission.manual">
+                      {{booking.spaceship.transmission.manual}}
+                    </dd>
 
-                <dt class="col-sm-3">A/C</dt>
-                <dd class="col-sm-9">{{booking.spaceship.ac}}</dd>
+                    <dt class="col-sm-3">A/C</dt>
+                    <dd class="col-sm-9">{{booking.spaceship.ac}}</dd>
 
-                <dt class="col-sm-3">Fuel</dt>
-                <dd class="col-sm-9" *ngIf="booking.spaceship.fuel.petrol">Petrol</dd>
-                <dd class="col-sm-9" *ngIf="booking.spaceship.fuel.diesel">Diesel</dd>
-              </dl>
+                    <dt class="col-sm-3">Fuel</dt>
+                    <dd class="col-sm-9" *ngIf="booking.spaceship.fuel.petrol">Petrol</dd>
+                    <dd class="col-sm-9" *ngIf="booking.spaceship.fuel.diesel">Diesel</dd>
+                  </dl>
+                </div>
+                <div class="col-6">
+                  <dl class="row comment">
+                    <dt class="col-sm-3">Planet‭ Pick-up</dt>
+                    <dd class="col-sm-9">{{booking.planet.pick_up}}</dd>
 
-              <dl class="row comment">
-                <dt class="col-sm-3">Planet‭ Pick-up</dt>
-                <dd class="col-sm-9">{{booking.planet.pick_up}}</dd>
+                    <dt class="col-sm-3">Planet‭ Drop off</dt>
+                    <dd class="col-sm-9">{{booking.planet.drop_off ? booking.planet.drop_off : booking.planet.pick_up}}</dd>
 
-                <dt class="col-sm-3">Planet‭ Drop off</dt>
-                <dd class="col-sm-9">{{booking.planet.drop_off ? booking.planet.drop_off : booking.planet.pick_up}}</dd>
+                    <dt class="col-sm-3">Pickup date</dt>
+                    <dd class="col-sm-9">{{booking.rentalStart}}</dd>
 
-                <dt class="col-sm-3">Pickup date</dt>
-                <dd class="col-sm-9">{{booking.rentalStart}}</dd>
-
-                <dt class="col-sm-3">Drop off Date</dt>
-                <dd class="col-sm-9">{{booking.rentalEnd}}</dd>
-              </dl>
+                    <dt class="col-sm-3">Drop off Date</dt>
+                    <dd class="col-sm-9">{{booking.rentalEnd}}</dd>
+                  </dl>
+                  <h6 *ngIf="booking.extras.length" class="text-uppercase mt-2 text-primary">Selected extras</h6>
+                  <div>
+                    <p *ngFor="let extra of booking.extras" class="text-left mb-1">{{extra}}</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="col-12">
-            <p class="text-uppercase">SECURITY DEPOSIT REQUIRED</p>
-            <p>When collecting the spaceship, you will be required to leave a deposit of € 100,00 that will be retained
-              for all the rental duration. The deposit will be released within 24 hours after the rental end. The amount
-              will be available again according to the technical credit card processes and policies.</p>
+            <div class="col-12 mt-3">
+              <p class="text-uppercase">SECURITY DEPOSIT REQUIRED</p>
+              <p>When collecting the spaceship, you will be required to leave a deposit of € 100,00 that will be retained
+                for all the rental duration. The deposit will be released within 24 hours after the rental end. The amount
+                will be available again according to the technical credit card processes and policies.</p>
 
-            <p class="text-uppercase">CREDIT CARD POLICY</p>
-            <p>When collecting the spaceship, a credit card will be required to secure the deposit for guarantee.
-              Please, make sure that the availability is enough to cover the required amount. The credit card must be
-              traditional: ATM and debit cards won't be accepted. Also, the credit card must be entitled to the renter.
-              To rent some special spaceship groups (premium and GXEFAST) an additional credit card will be required,
-              running on a different circuit. When required, the additional credit card shall run on one of the
-              following circuits: Visa Gold, American Express or Diners. Please, contact our Call Center for more
-              information.</p>
+              <p class="text-uppercase">CREDIT CARD POLICY</p>
+              <p>When collecting the spaceship, a credit card will be required to secure the deposit for guarantee.
+                Please, make sure that the availability is enough to cover the required amount. The credit card must be
+                traditional: ATM and debit cards won't be accepted. Also, the credit card must be entitled to the renter.
+                To rent some special spaceship groups (premium and GXEFAST) an additional credit card will be required,
+                running on a different circuit. When required, the additional credit card shall run on one of the
+                following circuits: Visa Gold, American Express or Diners. Please, contact our Call Center for more
+                information.</p>
 
-            <p class="text-uppercase">PERSONAL DOCUMENTS REQUIRED</p>
-            <p>When collecting the spaceship, please don't forget to bring with you your ID card (or your passport if
-              you are not UE citizen) complete with your home address and your pilot's license, that will have to be
-              valid since a minimum of 1 year. Please remember that the pilot's license must be valid for international
-              use, otherwise it will have to be accompanied by a translation made from an embassy or an equivalent
-              authority, recognized by the Universe authorities.</p>
+              <p class="text-uppercase">PERSONAL DOCUMENTS REQUIRED</p>
+              <p>When collecting the spaceship, please don't forget to bring with you your ID card (or your passport if
+                you are not UE citizen) complete with your home address and your pilot's license, that will have to be
+                valid since a minimum of 1 year. Please remember that the pilot's license must be valid for international
+                use, otherwise it will have to be accompanied by a translation made from an embassy or an equivalent
+                authority, recognized by the Universe authorities.</p>
 
-            <h6>Gala•xe - Spaceship rental wishes you a pleasant trip!</h6>
-            <button class="btn btn-lg btn-primary btn-rounded mt-2" routerLink="/">Go back to home</button>
+              <h6>Gala•xe - Spaceship rental wishes you a pleasant trip!</h6>
+              <button class="btn btn-lg btn-primary btn-rounded mt-2" routerLink="/">Go back to home</button>
+            </div>
           </div>
         </div>
       </div>

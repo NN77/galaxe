@@ -5,6 +5,30 @@
 <section class="d-flex flex-column align-items-center" *ngIf="spaceship">
   <div class="container">
     <div class="row">
+      <div class="col-12">
+        <div class="card card-ecommerce-3 o-hidden m-2 p-4">
+          <div class="row">
+            <div class="col-6">
+              <dl class="row comment">
+                <dt class="col-sm-3">Planet‭ Pick-up</dt>
+                <dd class="col-sm-9">{{queryParams.planetPickup}}</dd>
+
+                <dt class="col-sm-3">Planet‭ Drop off</dt>
+                <dd class="col-sm-9">{{queryParams.planetDropoff ? queryParams.planetDropoff : queryParams.planetPickup}}</dd>
+              </dl>
+            </div>
+            <div class="col-6">
+              <dl class="row comment">
+                <dt class="col-sm-3">Pickup date</dt>
+                <dd class="col-sm-9">{{queryParams.rentalStart}}</dd>
+
+                <dt class="col-sm-3">Drop off Date</dt>
+                <dd class="col-sm-9">{{queryParams.rentalEnd}}</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="col-lg-12" [@animate]="{value:'*',params:{delay: '300ms', y:'50px'}}">
         <div class="card card-ecommerce-3 o-hidden m-2"
              [ngClass]="{'economy' : spaceship.category.economy, 'compact' : spaceship.category.compact, 'premium' : spaceship.category.premium, 'gxefast' : spaceship.category.gxefast}">
@@ -49,7 +73,10 @@
                         <br>
                         <small *ngIf="queryParams.rentalRange > 1" class="text-muted float-right"><span
                           class="badge badge-{{spaceship?.badge?.color}} mr-2">
-                        {{spaceship?.badge?.text}}</span>{{spaceship?.price?.sale * queryParams.rentalRange | currency:'EUR'}} total for
+                        {{spaceship?.badge?.text}}</span>{{spaceship?.price?.sale * queryParams.rentalRange +
+                          (extras.includes('Additional Driver') ? (10 * queryParams.rentalRange) : 1) +
+                          (extras.includes('Baby seat') ? 48 : 1) +
+                          (extras.includes('GPS') ? (5 * queryParams.rentalRange) : 1) | currency:'EUR'}} total for
                           {{queryParams.rentalRange}} days
                         </small>
                       </div>
@@ -73,7 +100,7 @@
                       </div>
                       <btn-loading
                         (click)="bookAndPay()" [loading]="loading"
-                        class="btn btn-primary btn-lg float-right mt-auto" [disabled]="loading"
+                        class="btn btn-primary btn-lg booking_button float-right mt-auto" [disabled]="loading"
                         [ngClass]="{'economy' : spaceship.category.economy, 'compact' : spaceship.category.compact,
                     'premium' : spaceship.category.premium, 'gxefast' : spaceship.category.gxefast}">
                         Book & Pay now
@@ -104,7 +131,7 @@
             <div class="d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3">
               <i class="icon-regular i-Calendar-4"></i>
               <div class="flex-grow-1 ml-4">
-                <h6 class="m-0">Baby Seat <span class="text-info">48,12 € each per rental</span></h6>
+                <h6 class="m-0">Baby Seat <span class="text-info">48,00 € each per rental</span></h6>
                 <p class="m-0 text-small text-muted">Recommended for children weighing under 20 lbs / 9kg (Birth to approx 1-12 months)</p>
               </div>
               <div>

@@ -33,8 +33,8 @@ export class SigninComponent implements OnInit {
         });
 
         this.signinForm = this.fb.group({
-            email: ['hubertgudan@gmail.com', Validators.required],
-            password: ['password', Validators.required]
+            email: ['tonyhawk@rentalspaceships.com', Validators.required],
+            password: ['Password123#', Validators.required]
         });
     }
 
