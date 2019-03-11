@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SpaceshipsListComponent } from './spaceships-list/spaceships-list.component';
-import { SpaceshipsDetailComponent } from './spaceships-detail/spaceships-detail.component';
+import { BookingsDetailComponent } from './bookings-detail/bookings-detail.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SpaceshipsListComponent
+    component: BookingsDetailComponent
   },
   {
-    path: ':id',
-    component: SpaceshipsDetailComponent
+    path: 'confirmation',
+    component: BookingsDetailComponent
   }
 ];
 
@@ -19,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SpaceshipsRoutingModule { }
+export class BookingRoutingModule { }

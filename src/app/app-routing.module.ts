@@ -61,6 +61,16 @@ const routes: Routes = [
   },
   {
     path: '',
+    component: SidebarLayoutComponent,
+    children: [
+      {
+        path: 'bookings',
+        loadChildren: './views/pages/bookings/bookings.module#BookingsModule'
+      }
+    ]
+  },
+  {
+    path: '',
     component: HomeLayoutComponent,
     children: [
       {

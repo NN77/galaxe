@@ -1,128 +1,84 @@
-<ngb-alert class="alert alert-danger my-2 m-4">
-  <strong>It's busy in {{queryParams.planetPickup}} on your dates, prices are likely to rise. </strong>
-  <span class="text-dark">Tip: Don't wait until it's too late! Book now so you don't miss out on today's price.</span>
-</ngb-alert>
-<section class="d-flex flex-column align-items-center" *ngIf="spaceship">
+<section class="d-flex flex-column align-items-center" *ngIf="booking">
   <div class="container">
     <div class="row">
       <div class="col-lg-12" [@animate]="{value:'*',params:{delay: '300ms', y:'50px'}}">
-        <div class="card card-ecommerce-3 o-hidden m-2"
-             [ngClass]="{'economy' : spaceship.category.economy, 'compact' : spaceship.category.compact, 'premium' : spaceship.category.premium, 'gxefast' : spaceship.category.gxefast}">
+        <div class="card card-ecommerce-3 o-hidden m-2 p-5">
           <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-5 p-0">
-              <ngb-carousel *ngIf="spaceship.gallery">
-                <ng-template ngbSlide>
-                  <img [src]="spaceship.gallery[0]" alt="">
-                </ng-template>
-                <ng-template ngbSlide>
-                  <img [src]="spaceship.gallery[1]" alt="">
-                </ng-template>
-              </ngb-carousel>
-              <div class="gallery_categories">
-              <span *ngIf="spaceship.category.economy"
-                    class="text-small text-muted text-uppercase chip chip-item my-2 economy">economy</span>
-                <span *ngIf="spaceship.category.compact"
-                      class="text-small text-muted text-uppercase chip chip-item my-2 compact">compact</span>
-                <span *ngIf="spaceship.category.premium"
-                      class="text-small text-muted text-uppercase chip chip-item my-2 premium">premium</span>
-                <span *ngIf="spaceship.category.gxefast"
-                      class="text-small text-muted text-uppercase chip chip-item my-2 gxefast">gxefast</span>
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-7 p-2">
-              <div class="row p-4">
-                <div class="col-12">
-                  <div class="row">
-                    <div class="col-6">
-                      <h4 class="m-0 font-weight-bold text-muted">{{spaceship.name}}
-                        <small class="text-muted font-weight-light">or similar</small>
-                      </h4>
-                    </div>
-                    <div class="col-6">
-                      <div class="card-price float-right">
-                        <small class="float-right mt-2 ml-1">per day</small>
-                        <p class="m-0 float-right"><strong>{{spaceship?.price?.sale | currency:'EUR'}} </strong>
-                          <del>
-                            <small>{{spaceship?.price?.previous | currency:'EUR'}}</small>
-                          </del>
-                        </p>
-                        <br>
-                        <small *ngIf="queryParams.rentalRange > 1" class="text-muted float-right"><span
-                          class="badge badge-{{spaceship?.badge?.color}} mr-2">
-                        {{spaceship?.badge?.text}}</span>{{spaceship?.price?.sale * queryParams.rentalRange | currency:'EUR'}} total for
-                          {{queryParams.rentalRange}} days
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="row">
-                    <div class="col-6" *ngFor="let feature of spaceship.features">
-                      <i class="icon-regular i-{{feature?.icon}}"></i> {{feature?.text}}
-                    </div>
-                  </div>
-                  <div class="row mt-2">
-                    <div class="col-8">
-                      <p>{{spaceship.description}}</p>
-                    </div>
-                    <div class="col-4 d-flex flex-column">
-                      <h6 *ngIf="extras.length" class="text-uppercase mt-2 text-primary">Selected extras</h6>
-                      <div>
-                        <p *ngFor="let extra of extras" class="text-left mb-1">{{extra}}</p>
-                      </div>
-                      <btn-loading
-                        (click)="bookAndPay()" [loading]="loading"
-                        class="btn btn-primary btn-lg float-right mt-auto" [disabled]="loading"
-                        [ngClass]="{'economy' : spaceship.category.economy, 'compact' : spaceship.category.compact,
-                    'premium' : spaceship.category.premium, 'gxefast' : spaceship.category.gxefast}">
-                        Book & Pay now
-                      </btn-loading>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <p>Dear Tony Hawk, thanks for booking with Gala•xe - Spaceship rental.</p>
+            <p class="mb-4">Please see below your booking resume</p>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+              <h5 class="text-primary">Reservation details</h5>
+              <dl class="row comment">
+                <dt class="col-sm-3">Booking Nº‭</dt>
+                <dd class="col-sm-9">{{booking.id}}</dd>
+
+                <dt class="col-sm-3">Booking status</dt>
+                <dd class="col-sm-9">Confirmed</dd>
+
+                <dt class="col-sm-3">Main Driver</dt>
+                <dd class="col-sm-9">Tony Hawk</dd>
+              </dl>
+
+              <h5 class="text-primary">Spaceship details</h5>
+              <dl class="row comment">
+                <dt class="col-sm-3">Spaceship</dt>
+                <dd class="col-sm-9">{{booking.spaceship.name}}</dd>
+
+                <dt class="col-sm-3">Transmission</dt>
+                <dd class="col-sm-9" *ngIf="booking.spaceship.transmission.automatic">
+                  {{booking.spaceship.transmission.automatic}}
+                </dd>
+                <dd class="col-sm-9" *ngIf="booking.spaceship.transmission.manual">
+                  {{booking.spaceship.transmission.manual}}
+                </dd>
+
+                <dt class="col-sm-3">A/C</dt>
+                <dd class="col-sm-9">{{booking.spaceship.ac}}</dd>
+
+                <dt class="col-sm-3">Fuel</dt>
+                <dd class="col-sm-9" *ngIf="booking.spaceship.fuel.petrol">Petrol</dd>
+                <dd class="col-sm-9" *ngIf="booking.spaceship.fuel.diesel">Diesel</dd>
+              </dl>
+
+              <dl class="row comment">
+                <dt class="col-sm-3">Planet‭ Pick-up</dt>
+                <dd class="col-sm-9">{{booking.planet.pick_up}}</dd>
+
+                <dt class="col-sm-3">Planet‭ Drop off</dt>
+                <dd class="col-sm-9">{{booking.planet.drop_off ? booking.planet.drop_off : booking.planet.pick_up}}</dd>
+
+                <dt class="col-sm-3">Pickup date</dt>
+                <dd class="col-sm-9">{{booking.rentalStart}}</dd>
+
+                <dt class="col-sm-3">Drop off Date</dt>
+                <dd class="col-sm-9">{{booking.rentalEnd}}</dd>
+              </dl>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="col-lg-12" [@animate]="{value:'*',params:{delay: '300ms', y:'50px'}}">
-        <div class="card card-ecommerce-3 o-hidden m-2 pr-4">
-          <div class="card-body">
-            <div class="card-title">Extras</div>
-            <div class="d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3">
-              <i class="icon-regular i-Calendar-4"></i>
-              <div class="flex-grow-1 ml-4">
-                <h6 class="m-0">Additional Driver <span class="text-info">10,00 € each per day</span></h6>
-                <p class="m-0 text-small text-muted">Share the driving: journeys are always better when you can take turns at the wheel</p>
-              </div>
-              <div>
-                <button *ngIf="!extras.includes('Additional Driver')" class="btn btn-outline-primary btn-rounded btn-lg" (click)="addExtra('Additional Driver')">Add</button>
-                <button *ngIf="extras.includes('Additional Driver')" class="btn btn-outline-danger btn-rounded btn-lg" (click)="removeExtra('Additional Driver')">Remove</button>
-              </div>
-            </div>
-            <div class="d-flex align-items-center border-bottom-dotted-dim pb-3 mb-3">
-              <i class="icon-regular i-Calendar-4"></i>
-              <div class="flex-grow-1 ml-4">
-                <h6 class="m-0">Baby Seat <span class="text-info">48,12 € each per rental</span></h6>
-                <p class="m-0 text-small text-muted">Recommended for children weighing under 20 lbs / 9kg (Birth to approx 1-12 months)</p>
-              </div>
-              <div>
-                <button *ngIf="!extras.includes('Baby seat')" class="btn btn-outline-primary btn-rounded btn-lg" (click)="addExtra('Baby seat')">Add</button>
-                <button *ngIf="extras.includes('Baby seat')" class="btn btn-outline-danger btn-rounded btn-lg" (click)="removeExtra('Baby seat')">Remove</button>
-              </div>
-            </div>
-            <div class="d-flex align-items-center">
-              <i class="icon-regular i-Calendar-4"></i>
-              <div class="flex-grow-1 ml-4">
-                <h6 class="m-0">GPS <span class="text-info">5,00 € per day</span></h6>
-                <p class="m-0 text-small text-muted">Satellite navigation system provides turn-by-turn directions</p>
-              </div>
-              <div>
-                <button *ngIf="!extras.includes('GPS')" class="btn btn-outline-primary btn-rounded btn-lg" (click)="addExtra('GPS')">Add</button>
-                <button *ngIf="extras.includes('GPS')" class="btn btn-outline-danger btn-rounded btn-lg" (click)="removeExtra('GPS')">Remove</button>
-              </div>
-            </div>
+          <div class="col-12">
+            <p class="text-uppercase">SECURITY DEPOSIT REQUIRED</p>
+            <p>When collecting the spaceship, you will be required to leave a deposit of € 100,00 that will be retained
+              for all the rental duration. The deposit will be released within 24 hours after the rental end. The amount
+              will be available again according to the technical credit card processes and policies.</p>
+
+            <p class="text-uppercase">CREDIT CARD POLICY</p>
+            <p>When collecting the spaceship, a credit card will be required to secure the deposit for guarantee.
+              Please, make sure that the availability is enough to cover the required amount. The credit card must be
+              traditional: ATM and debit cards won't be accepted. Also, the credit card must be entitled to the renter.
+              To rent some special spaceship groups (premium and GXEFAST) an additional credit card will be required,
+              running on a different circuit. When required, the additional credit card shall run on one of the
+              following circuits: Visa Gold, American Express or Diners. Please, contact our Call Center for more
+              information.</p>
+
+            <p class="text-uppercase">PERSONAL DOCUMENTS REQUIRED</p>
+            <p>When collecting the spaceship, please don't forget to bring with you your ID card (or your passport if
+              you are not UE citizen) complete with your home address and your pilot's license, that will have to be
+              valid since a minimum of 1 year. Please remember that the pilot's license must be valid for international
+              use, otherwise it will have to be accompanied by a translation made from an embassy or an equivalent
+              authority, recognized by the Universe authorities.</p>
+
+            <h6>Gala•xe - Spaceship rental wishes you a pleasant trip!</h6>
+            <button class="btn btn-lg btn-primary btn-rounded mt-2" routerLink="/">Go back to home</button>
           </div>
         </div>
       </div>

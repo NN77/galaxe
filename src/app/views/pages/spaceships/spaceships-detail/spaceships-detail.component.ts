@@ -71,7 +71,7 @@ export class SpaceshipsDetailComponent implements OnInit {
     this.loading = true;
     const booking = {
       id: 'abcdefgh',
-      spaceshipId: this.spaceship._id,
+      spaceship: this.spaceship,
       planet: {
         pick_up: this.queryParams.planetPickup,
         drop_off: this.queryParams.planetDropoff
@@ -81,7 +81,8 @@ export class SpaceshipsDetailComponent implements OnInit {
       extras: this.extras
     };
     this.bookingService.addBooking(booking).subscribe((next: any) => {
-      this.lsService.setItem(booking['_id'], booking);
+      this.lsService.setItem('booking', booking);
+      this.router.navigateByUrl('/bookings/confirmation');
     });
   }
 

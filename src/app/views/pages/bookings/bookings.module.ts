@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BookingsDetailComponent } from './bookings-detail/bookings-detail.component';
+
+import { BookingRoutingModule } from './bookings-routing.module';
+
+const components = [
+  BookingsDetailComponent
+];
 
 @NgModule({
-  declarations: [],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    BookingRoutingModule
+  ],
+  declarations: components
 })
 export class BookingsModule { }
