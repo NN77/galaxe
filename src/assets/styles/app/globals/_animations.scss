@@ -27,3 +27,25 @@
 .float {
   animation: float 6s ease-in-out infinite;
 }
+
+.normandy {
+  img {
+    position: absolute;
+    right: 0;
+    margin-right: 120px;
+    &:nth-child(1) {
+      animation-duration: 5.5s;
+    }
+    &:nth-child(2) {
+      animation-duration: 5s;
+    }
+  }
+}
+
+@media (max-width: 990px) {
+  .normandy {
+    img {
+      display: none;
+    }
+  }
+}

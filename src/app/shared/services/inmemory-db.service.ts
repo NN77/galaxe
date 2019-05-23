@@ -1,12 +1,10 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { SpaceshipsDB } from '../inmemory-db/spaceships';
-import { BookingDB } from '../inmemory-db/booking';
+import { GamesDB } from '../inmemory-db/games';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     return {
-      spaceships: SpaceshipsDB.spaceships,
-      booking: BookingDB.booking
+      games: GamesDB.games
     };
   }
 }

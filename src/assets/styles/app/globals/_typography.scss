@@ -17,6 +17,10 @@ h1, h2, h3, h4, h5, h6, .card-title, .text-title {
   font-size: .75rem;
 }
 
+.text-muted {
+  color: $gray-200 !important;
+}
+
 .info {
   font-size: 1rem;
 }

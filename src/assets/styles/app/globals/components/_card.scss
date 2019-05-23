@@ -2,6 +2,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 20px 1px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.08);
   border: 0;
+  //background: linear-gradient(to bottom right,$dark,$black);
   &.border-top {
     box-shadow: 0 4px 15px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .1), inset 0 2px 0 0 $green;
   }
@@ -179,10 +180,9 @@
   }
 }
 
-.card-ecommerce-3 {
+.card-ecommerce-2 {
   .card-img-left {
-    height: 220px;
-    object-fit: cover;
+    -o-object-fit: none;
   }
 }
 

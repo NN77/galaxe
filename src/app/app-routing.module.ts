@@ -16,7 +16,7 @@ const adminRoutes: Routes = [
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'games',
     pathMatch: 'full'
   },
   {
@@ -54,7 +54,7 @@ const routes: Routes = [
     component: SidebarLayoutComponent,
     children: [
       {
-        path: 'spaceships',
+        path: 'games',
         loadChildren: './views/pages/spaceships/spaceships.module#SpaceshipsModule'
       }
     ]

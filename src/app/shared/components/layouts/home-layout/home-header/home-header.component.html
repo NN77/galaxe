@@ -1,12 +1,12 @@
 <div class="navbar fixed-top main-header">
   <div class="container">
     <div class="logo mr-5">
-      <img class="pointer" src="./assets/images/GXE_logo.svg" routerLink="/home" alt="">
+      <img class="pointer" src="./assets/images/NEXT_logo.svg" routerLink="/home" alt="">
     </div>
 
     <div class="d-flex align-items-center">
       <div ngbDropdown class="mega-menu d-flex">
-        <button ngbDropdownToggle class="btn btn-lg btn-warning discover mr-3 text-uppercase">Discover</button>
+        <button ngbDropdownToggle class="btn btn-lg btn-warning discover mr-3 text-uppercase">PROMOTIONS</button>
         <nav class="navbar navbar-expand-lg">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -15,22 +15,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="#" routerLink="/home">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" routerLink="/spaceships">Fleet</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" routerLink="/planets">Planets</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Offers</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">Support</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#">GXEFAST</a>
+                <a class="nav-link" href="#" routerLink="/games">All games</a>
               </li>
             </ul>
           </div>
@@ -38,30 +26,29 @@
         <div ngbDropdownMenu perfectScrollbar>
           <div class="row m-0">
             <div class="col-md-4 p-4 bg-img">
-              <h2 class="title">Discover <br> <strong>GXEFAST</strong></h2>
-              <p>Faster and smarter: GXEFAST is the first self-service spaceship rental fully digital which allows you to rent your spaceship at the airport through an app and skipping the counter!
+              <h2 class="title">Welcome <br> <strong>BONUS</strong></h2>
+              <p>Get €200 and 20 free spins when you first top up
               </p>
-              <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Exercitationem odio amet eos dolore suscipit placeat.</p>
-              <button class="btn btn-lg btn-rounded btn-outline-warning">Learn More</button>
+              <p class="mb-4">All you have to do is register, activate your bonus, top up and enjoy the game!</p>
+              <button class="btn btn-lg btn-rounded btn-outline-warning">JOIN</button>
             </div>
             <div class="col-md-4 p-4">
               <p class="text-primary text--cap border-bottom-primary d-inline-block">Menu</p>
               <div class="menu-icon-grid w-auto p-0 text-center">
-                <a href="#"><i class="i-Shop-4"></i> Rental planets</a>
-                <a href="#"><i class="i-Library"></i> Our fleet</a>
-                <a href="#"><i class="i-Drop"></i> Special offers</a>
-                <a href="#"><i class="i-File-Clipboard-File--Text"></i> Additional services</a>
-                <a href="#"><i class="i-Checked-User"></i> Partnership</a>
-                <a href="#"><i class="i-Ambulance"></i> Customer service</a>
+                <a href="#"><i class="i-Shop-4"></i> Slots</a>
+                <a href="#"><i class="i-Library"></i> Popular games</a>
+                <a href="#"><i class="i-Drop"></i> New games</a>
+                <a href="#"><i class="i-File-Clipboard-File--Text"></i> Jackpots</a>
+                <a href="#"><i class="i-Checked-User"></i> Crypto games</a>
+                <a href="#"><i class="i-Ambulance"></i> Table games</a>
               </div>
             </div>
             <div class="col-md-4 p-4">
               <p class="text-primary text--cap border-bottom-primary d-inline-block">Contact</p>
               <ul class="links">
-                <li><a href="#">Call center bookings</a></li>
-                <li><a href="#">Spaceship rental FAQ</a></li>
-                <li><a href="#">Corporate</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Payments</a></li>
                 <li><a href="#">Terms and conditions</a></li>
                 <li><a href="#">Privacy Policy</a></li>
               </ul>
@@ -79,7 +66,7 @@
         <div ngbDropdownMenu class="menu-icon-grid-dropdown">
           <div class="menu-icon-grid text-center">
             <a href="#"><i class="i-Shop-4"></i> Home</a>
-            <a href="#"><i class="i-Library"></i> My bookings</a>
+            <a href="#"><i class="i-Library"></i> My account</a>
             <a href="#"><i class="i-Drop"></i> FAQ</a>
             <a href="#"><i class="i-File-Clipboard-File--Text"></i> Special offers</a>
             <a href="#"><i class="i-Checked-User"></i> Additional services</a>
@@ -118,7 +105,7 @@
           <div class="dropdown-header">
             <i class="i-Lock-User mr-1"></i> Tony Hawk
           </div>
-          <button class="dropdown-item" routerLink="/sessions/signin">Manage booking</button>
+          <button class="dropdown-item" routerLink="/sessions/signin">Wallet</button>
           <button class="dropdown-item" routerLink="/sessions/signin">Account settings</button>
           <button class="dropdown-item" (click)="signout()">Sign out</button>
         </div>

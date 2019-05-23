@@ -7,7 +7,7 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    background: $background;
+    background: $blue;
     z-index: 100;
     .menu-toggle {
       width: 90px;
@@ -25,9 +25,8 @@
     }
 
     .logo {
-      width: $sidebar-left-width;
+      width: 250px;
       img {
-        max-width: 120px;
         margin: 0 auto;
         display: block;
         outline: none;
@@ -40,6 +39,10 @@
           .nav-link {
             font-family: $font-family-heading;
             font-size: 1.2rem;
+            color: $white;
+          }
+          &:hover {
+            background-color: rgba(255,255,255,0.2);
           }
         }
       }

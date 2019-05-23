@@ -1,4 +1,4 @@
-$blue:    #1F497D !default;
+$blue:    #449fd8 !default;
 $indigo:  #6610f2 !default;
 $purple:  #663399 !default;
 $pink:    #e83e8c !default;
@@ -8,8 +8,9 @@ $yellow:  #ffb822 !default;
 $green:   #4CAF50 !default;
 $teal:    #20c997 !default;
 $cyan:    #9C27B0 !default;
+$black:   #131418 !default;
 
-$primary-base: $blue;
+$primary-base: $black;
 
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
@@ -30,10 +31,10 @@ $info:          $blue !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-500 !default;
-$dark:          $gray-900 !default;
-$background:    $white !default;
-$foreground:    $blue !default;
-$heading:       darken($foreground, 8%);
+$dark:          #1a1d22 !default;
+$background:    $dark !default;
+$foreground:    $black !default;
+$heading:       $blue;
 
 $colors: (
   blue: $blue,

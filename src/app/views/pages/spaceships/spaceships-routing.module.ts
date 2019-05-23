@@ -10,8 +10,8 @@ const routes: Routes = [
     component: SpaceshipsListComponent
   },
   {
-    path: ':id',
-    component: SpaceshipsDetailComponent
+    path: ':category',
+    component: SpaceshipsListComponent
   }
 ];
 

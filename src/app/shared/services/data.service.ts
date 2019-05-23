@@ -10,7 +10,7 @@ export class DataService {
     private http: HttpClient
   ) { }
 
-  getSpaceships(queryParams?) {
-    return this.http.get<any[]>('api/spaceships', { params: queryParams });
+  getGames(queryParams?) {
+    return this.http.get<any[]>('api/games', { params: queryParams });
   }
 }
